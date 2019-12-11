@@ -19,10 +19,10 @@
                                 <rect key="frame" x="20" y="74" width="374" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EKI-ay-j18">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EKI-ay-j18">
                                 <rect key="frame" x="0.0" y="135" width="414" height="727"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CoH-AT-Ie5">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="X80-za-U40">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -31,13 +31,14 @@
                                 <cells/>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EKI-ay-j18" secondAttribute="trailing" id="8W0-Fb-cxS"/>
                             <constraint firstItem="hzh-78-DK1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="Dpk-k7-Yco"/>
                             <constraint firstItem="hzh-78-DK1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Fil-6A-hnk"/>
                             <constraint firstItem="hzh-78-DK1" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-20" id="InE-Qa-4Dh"/>
                             <constraint firstItem="EKI-ay-j18" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NsA-tR-XYj"/>
+                            <constraint firstItem="EKI-ay-j18" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="UAk-Ce-hgV"/>
                             <constraint firstItem="EKI-ay-j18" firstAttribute="top" secondItem="hzh-78-DK1" secondAttribute="bottom" constant="5" id="Z8Q-bg-fI5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="EKI-ay-j18" secondAttribute="bottom" id="skX-W4-xkX"/>
                         </constraints>

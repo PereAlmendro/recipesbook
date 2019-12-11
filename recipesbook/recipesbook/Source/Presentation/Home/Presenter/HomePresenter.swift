@@ -22,7 +22,7 @@ class HomePresenter: HomePresenterProtocol {
     private var interactor: HomeInteractorProtocol? = nil
     private var router: HomeRouterProtocol? = nil
     private var actualQuery: String = "a"
-    private var actualPage: Int = 0
+    private var actualPage: Int = 1
     
     var recipes: PublishSubject<[Result]> = PublishSubject()
     
@@ -32,12 +32,12 @@ class HomePresenter: HomePresenterProtocol {
     }
     
     func viewDidLoad() {
-        updateRecipes(with: "salads", isNewQuery: true)
+        updateRecipes(with: "a", isNewQuery: true)
     }
     
     private func updateRecipes(with query: String, isNewQuery: Bool) {
         if isNewQuery {
-            actualPage = 0
+            actualPage = 1
         }
         let page = String(actualPage)
         

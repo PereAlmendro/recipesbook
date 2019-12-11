@@ -10,7 +10,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class HomeViewController: UIViewController, HomeRecipeCollectionViewCellDelegate {
+class HomeViewController: UIViewController,
+HomeRecipeCollectionViewCellDelegate,
+UICollectionViewDelegateFlowLayout {
 
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -27,12 +29,15 @@ class HomeViewController: UIViewController, HomeRecipeCollectionViewCellDelegate
     func setupRxCollectionView() {
         collectionView.register(UINib(nibName: HomeRecipeCollectionViewCell.cellIdentifier, bundle: nil),
                                 forCellWithReuseIdentifier: HomeRecipeCollectionViewCell.cellIdentifier)
+        
         presenter.recipes.bind(to:
             collectionView.rx.items(cellIdentifier: HomeRecipeCollectionViewCell.cellIdentifier,
                                     cellType: HomeRecipeCollectionViewCell.self)) { (_, element ,cell) in
                                         cell.setupCell(recipe: element, delegate: self)
         }.disposed(by: disposeBag)
     }
+    
+    // MARK: - HomeRecipeCollectionViewCellDelegate
     
     func makeFavouriteAction(_ recipe: Result) {
         presenter.makeFavourite(recipe: recipe)

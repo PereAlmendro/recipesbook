@@ -14,6 +14,8 @@
 		1903FCB223A0517800A1AC1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1903FCB023A0517800A1AC1B /* LaunchScreen.storyboard */; };
 		1903FCBD23A0517800A1AC1B /* recipesbookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1903FCBC23A0517800A1AC1B /* recipesbookTests.swift */; };
 		1903FCC823A0517800A1AC1B /* recipesbookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1903FCC723A0517800A1AC1B /* recipesbookUITests.swift */; };
+		192186A423A179EB00FFC10A /* UIColor+palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192186A323A179EB00FFC10A /* UIColor+palette.swift */; };
+		192186A623A17A6500FFC10A /* UIFont+fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192186A523A17A6500FFC10A /* UIFont+fonts.swift */; };
 		1967250723A054C5005C6D17 /* RecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196724F623A054C5005C6D17 /* RecipeResponse.swift */; };
 		1967250823A054C5005C6D17 /* HomeRecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196724FB23A054C5005C6D17 /* HomeRecipeCollectionViewCell.swift */; };
 		1967250923A054C5005C6D17 /* HomeRecipeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196724FC23A054C5005C6D17 /* HomeRecipeCollectionViewCell.xib */; };
@@ -58,6 +60,8 @@
 		1903FCC323A0517800A1AC1B /* recipesbookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = recipesbookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1903FCC723A0517800A1AC1B /* recipesbookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipesbookUITests.swift; sourceTree = "<group>"; };
 		1903FCC923A0517800A1AC1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		192186A323A179EB00FFC10A /* UIColor+palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+palette.swift"; sourceTree = "<group>"; };
+		192186A523A17A6500FFC10A /* UIFont+fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+fonts.swift"; sourceTree = "<group>"; };
 		196724F623A054C5005C6D17 /* RecipeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeResponse.swift; sourceTree = "<group>"; };
 		196724FB23A054C5005C6D17 /* HomeRecipeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRecipeCollectionViewCell.swift; sourceTree = "<group>"; };
 		196724FC23A054C5005C6D17 /* HomeRecipeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeRecipeCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -258,6 +262,8 @@
 		1967250623A054C5005C6D17 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				192186A323A179EB00FFC10A /* UIColor+palette.swift */,
+				192186A523A17A6500FFC10A /* UIFont+fonts.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -525,6 +531,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				192186A423A179EB00FFC10A /* UIColor+palette.swift in Sources */,
+				192186A623A17A6500FFC10A /* UIFont+fonts.swift in Sources */,
 				1903FCA623A0517500A1AC1B /* AppDelegate.swift in Sources */,
 				1967250723A054C5005C6D17 /* RecipeResponse.swift in Sources */,
 				1967250E23A054C5005C6D17 /* HomePresenter.swift in Sources */,
