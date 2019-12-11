@@ -25,7 +25,8 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
     }()
     
     private weak var delegate: HomeRecipeCollectionViewCellDelegate?
-
+    private let contentMargins: CGFloat = 5
+    
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeIngredientsLabel: UILabel!
@@ -37,6 +38,7 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         setupLabelsUI()
         setupMakeFavouritesButton()
+        addShadow()
     }
     
     func setupCell(recipe: Result, delegate: HomeRecipeCollectionViewCellDelegate) {
@@ -67,7 +69,7 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
             layoutIfNeeded()
             var newFrame = layoutAttributes.frame
             let measuredHeight = contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-            let screenWidth = UIScreen.main.bounds.size.width
+            let screenWidth = UIScreen.main.bounds.size.width - (contentMargins * 2.0)
             newFrame.size = CGSize(width: screenWidth, height: measuredHeight)
             layoutAttributes.frame = newFrame
             isHeightCalculated = true
@@ -89,5 +91,12 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
     private func setupLabelsUI() {
         recipeNameLabel.font = UIFont.helveticaNeueBoldWith(size: 18)
         recipeIngredientsLabel.font = UIFont.helveticaNeueRegularWith(size: 17)
+    }
+    
+    private func addShadow() {
+        layer.masksToBounds = false
+        layer.shadowColor = UIColor.gray.cgColor
+        layer.shadowOpacity = 0.3
+        layer.shadowOffset = CGSize(width: 0, height: 2)
     }
 }
