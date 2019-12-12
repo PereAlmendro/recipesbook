@@ -63,8 +63,7 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
     // MARK - Overrides
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        // this code calculates UICollectionViewCells height,
-        // keeping the screen width as width
+        // this code calculates UICollectionViewCells height
         if !isHeightCalculated {
             layoutIfNeeded()
             var newFrame = layoutAttributes.frame

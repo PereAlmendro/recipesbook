@@ -14,6 +14,8 @@ protocol HomePresenterProtocol {
     var recipes: PublishSubject<[Result]> { get }
     func viewDidLoad()
     func makeFavourite(recipe: Result)
+    func fetchMoreRecipes()
+    func openDetail(recipe: Result)
 }
 
 class HomePresenter: HomePresenterProtocol {
@@ -21,8 +23,9 @@ class HomePresenter: HomePresenterProtocol {
     private let disposeBag = DisposeBag()
     private var interactor: HomeInteractorProtocol? = nil
     private var router: HomeRouterProtocol? = nil
-    private var actualQuery: String = "a"
+    private var actualQuery: String = "a" // "a" will be the first search
     private var actualPage: Int = 1
+    private var lastPage: Int = 0
     
     var recipes: PublishSubject<[Result]> = PublishSubject()
     
@@ -32,7 +35,7 @@ class HomePresenter: HomePresenterProtocol {
     }
     
     func viewDidLoad() {
-        updateRecipes(with: "a", isNewQuery: true)
+        updateRecipes(with: actualQuery, isNewQuery: true)
     }
     
     private func updateRecipes(with query: String, isNewQuery: Bool) {
@@ -41,21 +44,36 @@ class HomePresenter: HomePresenterProtocol {
         }
         let page = String(actualPage)
         
-        interactor?.fetchRecipes(query: query, ingredients: "", page: page)
-            .subscribe({ [weak self] (item) in
-                guard let recipe = item.element else { return }
-                self?.recipes.onNext(recipe.results)
-                self?.actualPage += 1
-        }).disposed(by: disposeBag)
+        if actualPage != lastPage {
+            self.lastPage = actualPage
+            
+            // TODO: Show Loading
+            interactor?.fetchRecipes(query: query, ingredients: "", page: page)
+                .subscribe({ [weak self] (item) in
+                    // TODO: Hide Loading
+                    guard let recipe = item.element else { return }
+                    self?.recipes.onNext(recipe.results)
+                    self?.actualPage += 1
+                }).disposed(by: disposeBag)
+        }
     }
     
     // MARK: - User Actions
     
+    func fetchMoreRecipes() {
+        updateRecipes(with: actualQuery, isNewQuery: false)
+    }
+    
     func searchQuery(queryString: String) {
+        actualQuery = queryString
         updateRecipes(with: queryString, isNewQuery: true)
     }
     
     func makeFavourite(recipe: Result) {
-        
+        // TODO: Save locally
+    }
+    
+    func openDetail(recipe: Result) {
+        // TODO: Open detail
     }
 }
