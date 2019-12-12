@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 
 protocol HomePresenterProtocol {
-    var recipes: PublishSubject<[Result]> { get }
+    var recipes: BehaviorRelay<[Result]> { get }
     func viewDidLoad()
     func makeFavourite(recipe: Result)
     func fetchMoreRecipes()
@@ -27,7 +27,7 @@ class HomePresenter: HomePresenterProtocol {
     private var actualPage: Int = 1
     private var lastPage: Int = 0
     
-    var recipes: PublishSubject<[Result]> = PublishSubject()
+    var recipes: BehaviorRelay<[Result]> = BehaviorRelay<[Result]>(value: [])
     
     init(interactor: HomeInteractorProtocol, router: HomeRouterProtocol) {
         self.interactor = interactor
@@ -47,22 +47,31 @@ class HomePresenter: HomePresenterProtocol {
         if actualPage != lastPage {
             self.lastPage = actualPage
             
-            // TODO: Show Loading
             interactor?.fetchRecipes(query: query, ingredients: "", page: page)
                 .subscribe({ [weak self] (item) in
-                    // TODO: Hide Loading
-                    guard let recipe = item.element else { return }
-                    self?.recipes.onNext(recipe.results)
                     self?.actualPage += 1
+                    guard let recipe = item.element else { return }
+                    
+                    var newResults = self?.recipes.value
+                    newResults?.append(contentsOf: recipe.results)
+                    
+                    guard let results = newResults else { return }
+                    self?.recipes.accept(results)
                 }).disposed(by: disposeBag)
         }
     }
     
-    // MARK: - User Actions
+    // MARK: - infinite scrolling
+    
+    func prefetchItems(at IndexPaths: [IndexPath]) {
+        
+    }
     
     func fetchMoreRecipes() {
         updateRecipes(with: actualQuery, isNewQuery: false)
     }
+    
+    // MARK: - User Actions
     
     func searchQuery(queryString: String) {
         actualQuery = queryString

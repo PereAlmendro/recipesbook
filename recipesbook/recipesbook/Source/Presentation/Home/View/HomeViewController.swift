@@ -32,9 +32,12 @@ UIScrollViewDelegate {
         
         collectionView.rx.setDelegate(self).disposed(by: disposeBag)
         
-        presenter.recipes.asObserver().bind(to: collectionView.rx.items(cellIdentifier: HomeRecipeCollectionViewCell.cellIdentifier,
-                                    cellType: HomeRecipeCollectionViewCell.self)) { (_, element ,cell) in
-                                        cell.setupCell(recipe: element, delegate: self)
+        presenter.recipes
+            .bind(to:
+                collectionView.rx.items(cellIdentifier: HomeRecipeCollectionViewCell.cellIdentifier,
+                                        cellType: HomeRecipeCollectionViewCell.self)) { (_, element ,cell) in
+                                            
+                                            cell.setupCell(recipe: element, delegate: self)
         }.disposed(by: disposeBag)
         
         collectionView.rx.scrollViewDidScroll.subscribe({ [weak self] event in
