@@ -17,6 +17,10 @@ protocol HomeRouterProtocol {
 class HomeRouter: HomeRouterProtocol {
     weak var navigationController: UINavigationController?
     
+    init(navigationController: UINavigationController?) {
+        self.navigationController = navigationController
+    }
+    
     func openRecipeDetailWithRequest(_ request: String) {
         // TODO : Open detail web VIew
     }
