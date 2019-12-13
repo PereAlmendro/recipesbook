@@ -42,7 +42,7 @@ UIScrollViewDelegate {
         }.disposed(by: disposeBag)
         
         collectionView.rx.prefetchItems.subscribe( { event in
-            guard let indexPaths = event.element else { return }
+            //guard let indexPaths = event.element else { return }
             
         }).disposed(by: disposeBag)
         
@@ -62,10 +62,6 @@ UIScrollViewDelegate {
 //            }
 //        }).disposed(by: disposeBag)
         
-        collectionView.rx.modelSelected(Result.self).subscribe({[weak self] event in
-            guard let item = event.element else { return }
-            self?.presenter.openDetail(recipe: item)
-        }).disposed(by: disposeBag)
     }
     
     // MARK: - HomeRecipeCollectionViewCellDelegate

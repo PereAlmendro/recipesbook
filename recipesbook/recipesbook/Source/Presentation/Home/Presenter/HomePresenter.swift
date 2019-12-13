@@ -15,7 +15,6 @@ protocol HomePresenterProtocol {
     func viewDidLoad()
     func makeFavourite(recipe: Result)
     func fetchMoreRecipes()
-    func openDetail(recipe: Result)
     func navigationBarRightButtonAction()
 }
 
@@ -81,10 +80,6 @@ class HomePresenter: HomePresenterProtocol {
     
     func makeFavourite(recipe: Result) {
         // TODO: Save locally
-    }
-    
-    func openDetail(recipe: Result) {
-        // TODO: Open detail
     }
     
     func navigationBarRightButtonAction() {
