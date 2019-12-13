@@ -31,7 +31,6 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeIngredientsLabel: UILabel!
     @IBOutlet weak var makeFavouriteButton: UIButton!
-    private var isHeightCalculated: Bool = false
     private var recipe: Result? = nil
     
     override func awakeFromNib() {
@@ -64,15 +63,11 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         // this code calculates UICollectionViewCells height
-        if !isHeightCalculated {
-            layoutIfNeeded()
-            var newFrame = layoutAttributes.frame
-            let measuredHeight = contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-            let screenWidth = UIScreen.main.bounds.size.width - (contentMargins * 2.0)
-            newFrame.size = CGSize(width: screenWidth, height: measuredHeight)
-            layoutAttributes.frame = newFrame
-            isHeightCalculated = true
-        }
+        var newFrame = layoutAttributes.frame
+        let measuredHeight = contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+        let screenWidth = UIScreen.main.bounds.size.width - (contentMargins * 2.0)
+        newFrame.size = CGSize(width: screenWidth, height: ssmeasuredHeight)
+        layoutAttributes.frame = newFrame
         return layoutAttributes
     }
     
@@ -83,7 +78,7 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
         makeFavouriteButton.titleLabel?.numberOfLines = 2
         makeFavouriteButton.titleLabel?.textAlignment = .center
         makeFavouriteButton.layer.borderWidth = 1
-        makeFavouriteButton.layer.borderColor = UIColor.defaultBlue.cgColor
+        makeFavouriteButton.layer.borderColor = UIColor.systemRed.cgColor
         makeFavouriteButton.layer.cornerRadius = 5
     }
     

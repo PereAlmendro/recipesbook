@@ -22,38 +22,46 @@ UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Recipes Book"
         presenter.viewDidLoad()
         setupRxCollectionView()
     }
     
-    func setupRxCollectionView() {
+    private func setupRxCollectionView() {
         collectionView.register(UINib(nibName: HomeRecipeCollectionViewCell.cellIdentifier, bundle: nil),
                                 forCellWithReuseIdentifier: HomeRecipeCollectionViewCell.cellIdentifier)
         
         collectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        collectionView.isPrefetchingEnabled = true
         
         presenter.recipes
             .bind(to:
                 collectionView.rx.items(cellIdentifier: HomeRecipeCollectionViewCell.cellIdentifier,
-                                        cellType: HomeRecipeCollectionViewCell.self)) { (_, element ,cell) in
-                                            
-                                            cell.setupCell(recipe: element, delegate: self)
+                                        cellType: HomeRecipeCollectionViewCell.self)) { [weak self] (_, element ,cell) in
+                                            guard let strongSelf = self else { return }
+                                            cell.setupCell(recipe: element, delegate: strongSelf)
         }.disposed(by: disposeBag)
         
-        collectionView.rx.scrollViewDidScroll.subscribe({ [weak self] event in
-            guard let scrollView = event.element else { return }
+        collectionView.rx.prefetchItems.subscribe( { event in
+            guard let indexPaths = event.element else { return }
             
-            let scrollViewHeight = scrollView.frame.size.height
-            let scrollViewContentSize = scrollView.contentSize.height
-            let scrollViewOffset = scrollView.contentOffset.y
-            let bottomOffsetLoadMore: CGFloat = 100.0
-            
-            let isAtBottom = (scrollViewOffset + scrollViewHeight > scrollViewContentSize - bottomOffsetLoadMore)
-            if (isAtBottom) {
-                scrollView.stopScrolling()
-                self?.presenter.fetchMoreRecipes()
-            }
         }).disposed(by: disposeBag)
+        
+//        collectionView.rx.scrollViewDidScroll.subscribe({ [weak self] event in
+            // TODO: remove this and implement prefetchItems to load more cells while user scrolls
+//            guard let scrollView = event.element else { return }
+//
+//            let scrollViewHeight = scrollView.frame.size.height
+//            let scrollViewContentSize = scrollView.contentSize.height
+//            let scrollViewOffset = scrollView.contentOffset.y
+//            let bottomOffsetLoadMore: CGFloat = 100.0
+//
+//            let isAtBottom = (scrollViewOffset + scrollViewHeight > scrollViewContentSize - bottomOffsetLoadMore)
+//            if (isAtBottom) {
+//                scrollView.stopScrolling()
+//                self?.presenter.fetchMoreRecipes()
+//            }
+//        }).disposed(by: disposeBag)
         
         collectionView.rx.modelSelected(Result.self).subscribe({[weak self] event in
             guard let item = event.element else { return }
@@ -65,5 +73,8 @@ UIScrollViewDelegate {
     
     func makeFavouriteAction(_ recipe: Result) {
         presenter.makeFavourite(recipe: recipe)
+    }
+    @IBAction func navigationBarRightButtonAction(_ sender: Any) {
+        presenter.navigationBarRightButtonAction()
     }
 }

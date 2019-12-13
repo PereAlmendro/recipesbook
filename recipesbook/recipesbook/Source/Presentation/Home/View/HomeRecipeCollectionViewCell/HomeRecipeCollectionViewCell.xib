@@ -56,11 +56,19 @@
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peb-fg-dU4">
                                 <rect key="frame" x="263" y="246.5" width="111" height="38"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="10" maxX="5" maxY="10"/>
-                                <state key="normal" title="Make favourite"/>
+                                <state key="normal" title="Make favourite">
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="makeFavouriteAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="sM2-q7-z00"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Has lactose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUR-dq-D0X">
+                                <rect key="frame" x="274.5" y="20" width="89.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -69,8 +77,10 @@
                             <constraint firstAttribute="trailing" secondItem="at3-z7-sKs" secondAttribute="trailing" constant="10" id="INH-CO-ft8"/>
                             <constraint firstItem="peb-fg-dU4" firstAttribute="leading" secondItem="2w4-nE-zcj" secondAttribute="trailing" constant="5" id="M5C-tq-kIX"/>
                             <constraint firstItem="2w4-nE-zcj" firstAttribute="top" secondItem="at3-z7-sKs" secondAttribute="bottom" id="NQe-ip-Cld"/>
+                            <constraint firstItem="NUR-dq-D0X" firstAttribute="top" secondItem="Ik4-dH-EB9" secondAttribute="top" constant="20" id="SH8-8S-iRX"/>
                             <constraint firstItem="2w4-nE-zcj" firstAttribute="leading" secondItem="Ik4-dH-EB9" secondAttribute="leading" constant="10" id="a0y-aE-me2"/>
                             <constraint firstItem="at3-z7-sKs" firstAttribute="top" secondItem="Ik4-dH-EB9" secondAttribute="top" constant="5" id="fBg-BZ-BCp"/>
+                            <constraint firstAttribute="trailing" secondItem="NUR-dq-D0X" secondAttribute="trailing" constant="20" id="j9d-fB-x80"/>
                             <constraint firstAttribute="trailing" secondItem="peb-fg-dU4" secondAttribute="trailing" constant="10" id="pFX-3t-Byi"/>
                             <constraint firstItem="peb-fg-dU4" firstAttribute="centerY" secondItem="2w4-nE-zcj" secondAttribute="centerY" id="qXG-2R-0cz"/>
                         </constraints>
