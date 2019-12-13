@@ -49,7 +49,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Recipes book" id="sR0-8U-Bbo">
-                        <barButtonItem key="rightBarButtonItem" image="heart" catalog="system" style="plain" id="X8Q-rK-tfD">
+                        <barButtonItem key="rightBarButtonItem" image="heart" catalog="system" style="done" id="X8Q-rK-tfD">
                             <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="navigationBarRightButtonAction:" destination="BYZ-38-t0r" id="f9F-Vb-JV1"/>

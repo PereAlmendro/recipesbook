@@ -31,7 +31,6 @@ UIScrollViewDelegate {
         collectionView.register(UINib(nibName: HomeRecipeCollectionViewCell.cellIdentifier, bundle: nil),
                                 forCellWithReuseIdentifier: HomeRecipeCollectionViewCell.cellIdentifier)
         
-        collectionView.rx.setDelegate(self).disposed(by: disposeBag)
         collectionView.isPrefetchingEnabled = true
         
         presenter.recipes

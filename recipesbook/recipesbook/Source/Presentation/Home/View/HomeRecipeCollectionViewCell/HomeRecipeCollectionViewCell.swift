@@ -66,7 +66,7 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
         var newFrame = layoutAttributes.frame
         let measuredHeight = contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         let screenWidth = UIScreen.main.bounds.size.width - (contentMargins * 2.0)
-        newFrame.size = CGSize(width: screenWidth, height: ssmeasuredHeight)
+        newFrame.size = CGSize(width: screenWidth, height: measuredHeight)
         layoutAttributes.frame = newFrame
         return layoutAttributes
     }
