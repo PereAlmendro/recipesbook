@@ -31,6 +31,11 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeIngredientsLabel: UILabel!
     @IBOutlet weak var makeFavouriteButton: UIButton!
+    @IBOutlet weak var hasLactoseLabel: UILabel!
+    @IBOutlet weak var hasLactoseContentViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var hasLactoseContentViewWidth: NSLayoutConstraint!
+    
+    private var isHeightCalculated: Bool = false
     private var recipe: Result? = nil
     
     override func awakeFromNib() {
@@ -83,8 +88,25 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupLabelsUI() {
+        hasLactoseLabel.text = "Has lactose"
+        hasLactoseLabel.font = UIFont.helveticaNeueBoldWith(size: 23)
+        rotateLabel()
         recipeNameLabel.font = UIFont.helveticaNeueBoldWith(size: 18)
         recipeIngredientsLabel.font = UIFont.helveticaNeueRegularWith(size: 17)
+    }
+    
+    private func rotateLabel() {
+        let angle = CGFloat(Double(45) * .pi/180)
+        hasLactoseLabel.transform = CGAffineTransform(rotationAngle: angle)
+        let labelSize = hasLactoseLabel.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize,
+                                                                withHorizontalFittingPriority: .defaultHigh,
+                                                                verticalFittingPriority: .defaultHigh)
+
+        hasLactoseContentViewHeight.constant = labelSize.width - labelSize.height
+        hasLactoseContentViewWidth.constant = labelSize.width - labelSize.height
+        
+        
+        
     }
     
     private func addShadow() {

@@ -63,24 +63,37 @@
                                     <action selector="makeFavouriteAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="sM2-q7-z00"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Has lactose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUR-dq-D0X">
-                                <rect key="frame" x="274.5" y="20" width="89.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1U-b0-w5A">
+                                <rect key="frame" x="224" y="5" width="150" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Has lactose" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUR-dq-D0X">
+                                        <rect key="frame" x="30.5" y="15" width="89.5" height="20"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ETE-Qb-Sdh"/>
+                                    <constraint firstItem="NUR-dq-D0X" firstAttribute="centerX" secondItem="J1U-b0-w5A" secondAttribute="centerX" id="LwB-fg-xKO"/>
+                                    <constraint firstAttribute="width" constant="150" id="Rkn-db-J21"/>
+                                    <constraint firstItem="NUR-dq-D0X" firstAttribute="centerY" secondItem="J1U-b0-w5A" secondAttribute="centerY" id="eTd-GP-Ala"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="at3-z7-sKs" firstAttribute="leading" secondItem="Ik4-dH-EB9" secondAttribute="leading" constant="10" id="BlK-rE-Ozl"/>
+                            <constraint firstItem="J1U-b0-w5A" firstAttribute="top" secondItem="Ik4-dH-EB9" secondAttribute="top" constant="5" id="F9W-ak-tgi"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2w4-nE-zcj" secondAttribute="bottom" id="Fnz-nf-N6Q"/>
                             <constraint firstAttribute="trailing" secondItem="at3-z7-sKs" secondAttribute="trailing" constant="10" id="INH-CO-ft8"/>
                             <constraint firstItem="peb-fg-dU4" firstAttribute="leading" secondItem="2w4-nE-zcj" secondAttribute="trailing" constant="5" id="M5C-tq-kIX"/>
                             <constraint firstItem="2w4-nE-zcj" firstAttribute="top" secondItem="at3-z7-sKs" secondAttribute="bottom" id="NQe-ip-Cld"/>
-                            <constraint firstItem="NUR-dq-D0X" firstAttribute="top" secondItem="Ik4-dH-EB9" secondAttribute="top" constant="20" id="SH8-8S-iRX"/>
                             <constraint firstItem="2w4-nE-zcj" firstAttribute="leading" secondItem="Ik4-dH-EB9" secondAttribute="leading" constant="10" id="a0y-aE-me2"/>
+                            <constraint firstAttribute="trailing" secondItem="J1U-b0-w5A" secondAttribute="trailing" constant="10" id="btl-R9-ID5"/>
                             <constraint firstItem="at3-z7-sKs" firstAttribute="top" secondItem="Ik4-dH-EB9" secondAttribute="top" constant="5" id="fBg-BZ-BCp"/>
-                            <constraint firstAttribute="trailing" secondItem="NUR-dq-D0X" secondAttribute="trailing" constant="20" id="j9d-fB-x80"/>
                             <constraint firstAttribute="trailing" secondItem="peb-fg-dU4" secondAttribute="trailing" constant="10" id="pFX-3t-Byi"/>
                             <constraint firstItem="peb-fg-dU4" firstAttribute="centerY" secondItem="2w4-nE-zcj" secondAttribute="centerY" id="qXG-2R-0cz"/>
                         </constraints>
@@ -96,6 +109,9 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="384" height="348"/>
             <connections>
+                <outlet property="hasLactoseContentViewHeight" destination="ETE-Qb-Sdh" id="EiQ-G9-rVU"/>
+                <outlet property="hasLactoseContentViewWidth" destination="Rkn-db-J21" id="oy3-mM-lWh"/>
+                <outlet property="hasLactoseLabel" destination="NUR-dq-D0X" id="QIZ-7s-TjU"/>
                 <outlet property="makeFavouriteButton" destination="peb-fg-dU4" id="elm-vk-zHo"/>
                 <outlet property="recipeImageView" destination="at3-z7-sKs" id="Z9z-Pz-8zK"/>
                 <outlet property="recipeIngredientsLabel" destination="ZwE-Vl-Se0" id="hEz-uJ-CNv"/>
