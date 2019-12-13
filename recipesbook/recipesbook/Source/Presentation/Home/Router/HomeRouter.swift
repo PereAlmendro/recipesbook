@@ -7,12 +7,17 @@
 //
 
 import Foundation
+import UIKit
 
 
 protocol HomeRouterProtocol {
-    
+    func openRecipeDetailWithRequest(_ request: String)
 }
 
 class HomeRouter: HomeRouterProtocol {
+    weak var navigationController: UINavigationController?
     
+    func openRecipeDetailWithRequest(_ request: String) {
+        // TODO : Open detail web VIew
+    }
 }

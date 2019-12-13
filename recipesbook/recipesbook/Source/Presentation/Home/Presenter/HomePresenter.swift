@@ -14,6 +14,7 @@ protocol HomePresenterProtocol {
     var recipes: PublishSubject<[Result]> { get }
     func viewDidLoad()
     func makeFavourite(recipe: Result)
+    func openDetail(recipe: Result)
 }
 
 class HomePresenter: HomePresenterProtocol {
@@ -57,5 +58,9 @@ class HomePresenter: HomePresenterProtocol {
     
     func makeFavourite(recipe: Result) {
         
+    }
+    
+    func openDetail(recipe: Result) {
+        router?.openRecipeDetailWithRequest(recipe.href)
     }
 }

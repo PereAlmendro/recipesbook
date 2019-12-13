@@ -35,6 +35,11 @@ UICollectionViewDelegateFlowLayout {
                                     cellType: HomeRecipeCollectionViewCell.self)) { (_, element ,cell) in
                                         cell.setupCell(recipe: element, delegate: self)
         }.disposed(by: disposeBag)
+        
+        collectionView.rx.modelSelected(Result.self).subscribe({[weak self] event in
+            guard let recipe = event.element else { return }
+            self?.presenter.openDetail(recipe: recipe)
+        }).disposed(by: disposeBag)
     }
     
     // MARK: - HomeRecipeCollectionViewCellDelegate
