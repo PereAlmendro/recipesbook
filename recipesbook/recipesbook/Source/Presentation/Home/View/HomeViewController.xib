@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="collectionView" destination="Dh5-xN-v03" id="3B9-Hw-xBn"/>
                 <outlet property="searchBar" destination="PqA-8R-tZO" id="7r2-6Q-EKc"/>
+                <outlet property="searchBarContentView" destination="oiZ-7P-Jra" id="JUD-jM-NMj"/>
                 <outlet property="view" destination="0p3-mp-ugD" id="5Jp-0u-bT7"/>
             </connections>
         </placeholder>
@@ -19,12 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <searchBar contentMode="redraw" searchBarStyle="minimal" prompt="Search by ingredients" placeholder="onions, carrots ..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqA-8R-tZO">
-                    <rect key="frame" x="20" y="54" width="374" height="90"/>
-                    <textInputTraits key="textInputTraits"/>
-                </searchBar>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Dh5-xN-v03">
-                    <rect key="frame" x="0.0" y="149" width="414" height="713"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Dh5-xN-v03">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2jc-Gw-3TY">
                         <size key="itemSize" width="50" height="50"/>
@@ -34,16 +31,32 @@
                     </collectionViewFlowLayout>
                     <cells/>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oiZ-7P-Jra">
+                    <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                    <subviews>
+                        <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqA-8R-tZO">
+                            <rect key="frame" x="20" y="0.0" width="374" height="56"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="PqA-8R-tZO" firstAttribute="leading" secondItem="oiZ-7P-Jra" secondAttribute="leading" constant="20" id="Gbn-Qp-oqU"/>
+                        <constraint firstItem="PqA-8R-tZO" firstAttribute="top" secondItem="oiZ-7P-Jra" secondAttribute="top" id="NhG-86-3W0"/>
+                        <constraint firstAttribute="bottom" secondItem="PqA-8R-tZO" secondAttribute="bottom" id="agK-ma-qxB"/>
+                        <constraint firstAttribute="trailing" secondItem="PqA-8R-tZO" secondAttribute="trailing" constant="20" id="rPf-SK-cih"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="pTs-ZO-mwk" firstAttribute="trailing" secondItem="Dh5-xN-v03" secondAttribute="trailing" id="0Yi-VE-w34"/>
+                <constraint firstItem="pTs-ZO-mwk" firstAttribute="trailing" secondItem="oiZ-7P-Jra" secondAttribute="trailing" id="1ny-Tc-WT0"/>
                 <constraint firstItem="pTs-ZO-mwk" firstAttribute="bottom" secondItem="Dh5-xN-v03" secondAttribute="bottom" id="7NH-FV-NsD"/>
-                <constraint firstItem="PqA-8R-tZO" firstAttribute="top" secondItem="pTs-ZO-mwk" secondAttribute="top" constant="10" id="C6h-aq-f2o"/>
-                <constraint firstItem="PqA-8R-tZO" firstAttribute="trailing" secondItem="pTs-ZO-mwk" secondAttribute="trailing" constant="-20" id="PhI-Bg-ujs"/>
+                <constraint firstItem="oiZ-7P-Jra" firstAttribute="leading" secondItem="pTs-ZO-mwk" secondAttribute="leading" id="Ft9-6y-kf1"/>
                 <constraint firstItem="Dh5-xN-v03" firstAttribute="leading" secondItem="pTs-ZO-mwk" secondAttribute="leading" id="Wan-bQ-KK0"/>
-                <constraint firstItem="PqA-8R-tZO" firstAttribute="leading" secondItem="pTs-ZO-mwk" secondAttribute="leading" constant="20" id="jxl-lZ-QZ1"/>
-                <constraint firstItem="Dh5-xN-v03" firstAttribute="top" secondItem="PqA-8R-tZO" secondAttribute="bottom" constant="5" id="yD4-xL-b7C"/>
+                <constraint firstItem="oiZ-7P-Jra" firstAttribute="top" secondItem="pTs-ZO-mwk" secondAttribute="top" id="h3E-P7-JSV"/>
+                <constraint firstItem="Dh5-xN-v03" firstAttribute="top" secondItem="pTs-ZO-mwk" secondAttribute="top" id="oEO-5P-mpQ"/>
                 <constraint firstItem="Dh5-xN-v03" firstAttribute="width" secondItem="0p3-mp-ugD" secondAttribute="width" id="zFn-Qq-jhv"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="pTs-ZO-mwk"/>

@@ -42,7 +42,7 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         setupLabelsUI()
         setupMakeFavouritesButton()
-        addShadow()
+        addBottomShadow()
     }
     
     func setupCell(recipe: Result, delegate: HomeRecipeCollectionViewCellDelegate) {
@@ -54,6 +54,8 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
         
         let url = URL(string: recipe.thumbnail)
         recipeImageView.setImageUrl(url)
+        
+        hasLactoseLabel.isHidden = true
     }
     
     // MARK - User Actions
@@ -68,6 +70,7 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         recipeImageView.setImageUrl(nil)
+        hasLactoseLabel.isHidden = true
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
@@ -108,15 +111,5 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
 
         hasLactoseContentViewHeight.constant = labelSize.width - labelSize.height
         hasLactoseContentViewWidth.constant = labelSize.width - labelSize.height
-        
-        
-        
-    }
-    
-    private func addShadow() {
-        layer.masksToBounds = false
-        layer.shadowColor = UIColor.gray.cgColor
-        layer.shadowOpacity = 0.3
-        layer.shadowOffset = CGSize(width: 0, height: 2)
     }
 }

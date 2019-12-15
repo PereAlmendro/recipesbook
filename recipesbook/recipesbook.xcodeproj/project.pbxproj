@@ -31,8 +31,9 @@
 		19E469E123A4EE8E00D5193A /* RecipeDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E469E023A4EE8E00D5193A /* RecipeDetailPresenter.swift */; };
 		19E469E323A4EEE100D5193A /* RecipeDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E469E223A4EEE100D5193A /* RecipeDetailRouter.swift */; };
 		19E469EA23A65B6800D5193A /* UIImageView+imageFromUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E469E923A65B6800D5193A /* UIImageView+imageFromUrl.swift */; };
-		19E94DF523A1AC9700FFDDA2 /* UICollectionView+rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E94DF423A1AC9700FFDDA2 /* UICollectionView+rx.swift */; };
-		19E94DF723A1B61F00FFDDA2 /* UIScrollView+StopScrlling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E94DF623A1B61F00FFDDA2 /* UIScrollView+StopScrlling.swift */; };
+		19E469EC23A6626200D5193A /* UIView+shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E469EB23A6626200D5193A /* UIView+shadow.swift */; };
+		19E94DF523A1AC9700FFDDA2 /* UIScrollView+rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E94DF423A1AC9700FFDDA2 /* UIScrollView+rx.swift */; };
+		19E94DF723A1B61F00FFDDA2 /* UIScrollView+StopScrolling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E94DF623A1B61F00FFDDA2 /* UIScrollView+StopScrolling.swift */; };
 		7513C9467D01221A334B47E1 /* Pods_recipesbookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5083766201631A1A7B52D62 /* Pods_recipesbookTests.framework */; };
 		CBA6085CB64A785B15A4024B /* Pods_recipesbook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF1E3A988A03C0EAF3CD8C5 /* Pods_recipesbook.framework */; };
 		EAB450D181E736E9AE29F2B6 /* Pods_recipesbook_recipesbookUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916EE0E5C5B3B94E1542A613 /* Pods_recipesbook_recipesbookUITests.framework */; };
@@ -86,8 +87,9 @@
 		19E469E023A4EE8E00D5193A /* RecipeDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailPresenter.swift; sourceTree = "<group>"; };
 		19E469E223A4EEE100D5193A /* RecipeDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailRouter.swift; sourceTree = "<group>"; };
 		19E469E923A65B6800D5193A /* UIImageView+imageFromUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+imageFromUrl.swift"; sourceTree = "<group>"; };
-		19E94DF423A1AC9700FFDDA2 /* UICollectionView+rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+rx.swift"; sourceTree = "<group>"; };
-		19E94DF623A1B61F00FFDDA2 /* UIScrollView+StopScrlling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+StopScrlling.swift"; sourceTree = "<group>"; };
+		19E469EB23A6626200D5193A /* UIView+shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+shadow.swift"; sourceTree = "<group>"; };
+		19E94DF423A1AC9700FFDDA2 /* UIScrollView+rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+rx.swift"; sourceTree = "<group>"; };
+		19E94DF623A1B61F00FFDDA2 /* UIScrollView+StopScrolling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+StopScrolling.swift"; sourceTree = "<group>"; };
 		7A8CBEB435F3BE1A324943E3 /* Pods-recipesbook-recipesbookUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-recipesbook-recipesbookUITests.release.xcconfig"; path = "Target Support Files/Pods-recipesbook-recipesbookUITests/Pods-recipesbook-recipesbookUITests.release.xcconfig"; sourceTree = "<group>"; };
 		80C12422E073104975FAADCB /* Pods-recipesbookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-recipesbookTests.release.xcconfig"; path = "Target Support Files/Pods-recipesbookTests/Pods-recipesbookTests.release.xcconfig"; sourceTree = "<group>"; };
 		916EE0E5C5B3B94E1542A613 /* Pods_recipesbook_recipesbookUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipesbook_recipesbookUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -292,9 +294,10 @@
 			children = (
 				192186A323A179EB00FFC10A /* UIColor+palette.swift */,
 				192186A523A17A6500FFC10A /* UIFont+fonts.swift */,
-				19E94DF423A1AC9700FFDDA2 /* UICollectionView+rx.swift */,
-				19E94DF623A1B61F00FFDDA2 /* UIScrollView+StopScrlling.swift */,
+				19E94DF423A1AC9700FFDDA2 /* UIScrollView+rx.swift */,
+				19E94DF623A1B61F00FFDDA2 /* UIScrollView+StopScrolling.swift */,
 				19E469E923A65B6800D5193A /* UIImageView+imageFromUrl.swift */,
+				19E469EB23A6626200D5193A /* UIView+shadow.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -617,12 +620,13 @@
 			files = (
 				192186A423A179EB00FFC10A /* UIColor+palette.swift in Sources */,
 				192186A623A17A6500FFC10A /* UIFont+fonts.swift in Sources */,
-				19E94DF523A1AC9700FFDDA2 /* UICollectionView+rx.swift in Sources */,
+				19E94DF523A1AC9700FFDDA2 /* UIScrollView+rx.swift in Sources */,
 				1905037323A2EC5400944E78 /* RecipeRepository.swift in Sources */,
 				1903FCA623A0517500A1AC1B /* AppDelegate.swift in Sources */,
 				1967250723A054C5005C6D17 /* RecipeResponse.swift in Sources */,
 				1967250E23A054C5005C6D17 /* HomePresenter.swift in Sources */,
 				19E469E123A4EE8E00D5193A /* RecipeDetailPresenter.swift in Sources */,
+				19E469EC23A6626200D5193A /* UIView+shadow.swift in Sources */,
 				19E469DF23A4EE6F00D5193A /* RecipeDetailInteractor.swift in Sources */,
 				1967250823A054C5005C6D17 /* HomeRecipeCollectionViewCell.swift in Sources */,
 				1903FCA823A0517500A1AC1B /* SceneDelegate.swift in Sources */,
@@ -630,7 +634,7 @@
 				1967250C23A054C5005C6D17 /* HomeRouter.swift in Sources */,
 				1967250D23A054C5005C6D17 /* ServiceError.swift in Sources */,
 				19E469EA23A65B6800D5193A /* UIImageView+imageFromUrl.swift in Sources */,
-				19E94DF723A1B61F00FFDDA2 /* UIScrollView+StopScrlling.swift in Sources */,
+				19E94DF723A1B61F00FFDDA2 /* UIScrollView+StopScrolling.swift in Sources */,
 				1967250A23A054C5005C6D17 /* HomeViewController.swift in Sources */,
 				19E469DC23A4EDC800D5193A /* RecipeDetailViewController.swift in Sources */,
 				1967250B23A054C5005C6D17 /* HomeInteractor.swift in Sources */,

@@ -15,6 +15,7 @@ UICollectionViewDelegateFlowLayout,
 HomeRecipeCollectionViewCellDelegate,
 UIScrollViewDelegate {
 
+    @IBOutlet weak var searchBarContentView: UIView!
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var collectionView: UICollectionView!
     
@@ -26,6 +27,8 @@ UIScrollViewDelegate {
         title = "Recipes Book"
         presenter?.viewDidLoad()
         setupRxCollectionView()
+        setupSearchBar()
+        enableLargeTitles()
     }
     
     private func setupRxCollectionView() {
@@ -56,6 +59,20 @@ UIScrollViewDelegate {
             guard let recipe = event.element else { return }
             presenter?.openDetail(recipe: recipe)
         }).disposed(by: disposeBag)
+        
+        collectionView.rx.scrollViewDidScroll.subscribe( { [weak self] event in
+            guard let scrollView = event.element else { return }
+            let showShadow = scrollView.contentOffset.y > 0
+            if  showShadow {
+                self?.searchBarContentView.addBottomShadow()
+            } else {
+                self?.searchBarContentView.removeShadow()
+            }
+        }).disposed(by: disposeBag)
+    }
+    
+    private func setupSearchBar() {
+        searchBar.placeholder = "Search : onions, carrots ..."
     }
     
     // MARK: - HomeRecipeCollectionViewCellDelegate
@@ -64,7 +81,12 @@ UIScrollViewDelegate {
         presenter?.makeFavourite(recipe: recipe)
     }
     
-    // MARK: - NavBar Action
+    // MARK: - NavBar
+    
+    private func enableLargeTitles() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+    }
     
     @IBAction func navigationBarRightButtonAction(_ sender: Any) {
         presenter?.navigationBarRightButtonAction()
@@ -76,6 +98,6 @@ UIScrollViewDelegate {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let screenWidth = UIScreen.main.bounds.size.width
-        return CGSize(width: screenWidth, height: 350)
+        return CGSize(width: screenWidth - 10, height: 350)
     }
 }
