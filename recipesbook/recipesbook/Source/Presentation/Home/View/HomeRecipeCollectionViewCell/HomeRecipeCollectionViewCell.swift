@@ -52,7 +52,7 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
         recipeNameLabel.text = recipe.title
         recipeIngredientsLabel.text = recipe.ingredients
         
-        guard let url = URL(string: recipe.thumbnail) else { return }
+        let url = URL(string: recipe.thumbnail)
         recipeImageView.setImageUrl(url)
         
         // TODO: consider only milk and cheese has lactose
@@ -67,6 +67,11 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK - Overrides
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        recipeImageView.setImageUrl(nil)
+    }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         // this code calculates UICollectionViewCells height

@@ -8,16 +8,27 @@
 
 import UIKit
 
+let imageCache = NSCache<NSString, UIImage>()
+
 extension UIImageView {
     
-    func setImageUrl(_ url: URL) {
+    func setImageUrl(_ url: URL?) {
+        
+        self.image = UIImage(named: "imgPlaceholder")
+        guard let url = url else { return }
+        
+        if let cachedImage = imageCache.object(forKey: NSString(string: url.absoluteString)) {
+            self.image = cachedImage
+            return
+        }
+        
         URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data,
                     let image = UIImage(data: data) else {
-                        self.image = UIImage(named: "placeholderImage")
                         return
                 }
+                imageCache.setObject(image, forKey: NSString(string: url.absoluteString))
                 self.image = image
             }
         }).resume()
