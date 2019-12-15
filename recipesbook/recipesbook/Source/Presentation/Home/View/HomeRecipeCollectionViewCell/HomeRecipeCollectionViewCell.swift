@@ -54,9 +54,6 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
         
         let url = URL(string: recipe.thumbnail)
         recipeImageView.setImageUrl(url)
-        
-        // TODO: consider only milk and cheese has lactose
-        hasLactoseContentView.isHidden = true
     }
     
     // MARK - User Actions
