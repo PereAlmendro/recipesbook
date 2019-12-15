@@ -52,9 +52,11 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
         recipeNameLabel.text = recipe.title
         recipeIngredientsLabel.text = recipe.ingredients
         
-        guard let url = URL(string: recipe.thumbnail),
-            let data = try? Data(contentsOf: url) else { return }
-        recipeImageView.image = UIImage(data: data)
+        guard let url = URL(string: recipe.thumbnail) else { return }
+        recipeImageView.setImageUrl(url)
+        
+        // TODO: consider only milk and cheese has lactose
+        hasLactoseContentView.isHidden = true
     }
     
     // MARK - User Actions
