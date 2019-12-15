@@ -17,13 +17,13 @@ UIScrollViewDelegate {
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    var presenter: HomePresenterProtocol = HomePresenter(interactor: HomeInteractor(), router: HomeRouter())
+    var presenter: HomePresenterProtocol? = nil
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Recipes Book"
-        presenter.viewDidLoad()
+        presenter?.viewDidLoad()
         setupRxCollectionView()
     }
     
@@ -33,7 +33,7 @@ UIScrollViewDelegate {
         
         collectionView.isPrefetchingEnabled = true
         
-        presenter.recipes
+        presenter?.recipes
             .bind(to:
                 collectionView.rx.items(cellIdentifier: HomeRecipeCollectionViewCell.cellIdentifier,
                                         cellType: HomeRecipeCollectionViewCell.self)) { [weak self] (_, element ,cell) in
@@ -62,12 +62,17 @@ UIScrollViewDelegate {
 //            }
 //        }).disposed(by: disposeBag)
         
+        
+        collectionView.rx.modelSelected(Result.self).subscribe({[weak self] event in
+            guard let recipe = event.element else { return }
+            self?.presenter?.openDetail(recipe: recipe)
+        }).disposed(by: disposeBag)
     }
     
     // MARK: - HomeRecipeCollectionViewCellDelegate
     
     func makeFavouriteAction(_ recipe: Result) {
-        presenter.makeFavourite(recipe: recipe)
+        presenter?.makeFavourite(recipe: recipe)
     }
     @IBAction func navigationBarRightButtonAction(_ sender: Any) {
         presenter.navigationBarRightButtonAction()
