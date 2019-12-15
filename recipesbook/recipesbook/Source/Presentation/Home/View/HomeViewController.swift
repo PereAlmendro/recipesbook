@@ -73,6 +73,9 @@ UIScrollViewDelegate {
     
     private func setupSearchBar() {
         searchBar.placeholder = "Search : onions, carrots ..."
+        searchBar.rx.searchButtonClicked.subscribe({ [weak self] event in
+            self?.presenter?.searchQuery(queryString: self?.searchBar.text)
+        }).disposed(by: disposeBag)
     }
     
     // MARK: - HomeRecipeCollectionViewCellDelegate

@@ -17,6 +17,7 @@ protocol HomePresenterProtocol {
     func fetchMoreRecipes()
     func navigationBarRightButtonAction()
     func openDetail(recipe: Result)
+    func searchQuery(queryString: String?)
 }
 
 class HomePresenter: HomePresenterProtocol {
@@ -24,7 +25,7 @@ class HomePresenter: HomePresenterProtocol {
     private let disposeBag = DisposeBag()
     private var interactor: HomeInteractorProtocol? = nil
     private var router: HomeRouterProtocol? = nil
-    private var actualQuery: String = "a" // "a" will be the first search
+    private var actualIngredients: String = "a" // "a" will be the first search
     private var actualPage: Int = 1
     private var lastPage: Int = 0
     
@@ -36,28 +37,31 @@ class HomePresenter: HomePresenterProtocol {
     }
     
     func viewDidLoad() {
-        updateRecipes(with: actualQuery, isNewQuery: true)
+        updateRecipes(with: actualIngredients, isNewQuery: true)
     }
     
-    private func updateRecipes(with query: String, isNewQuery: Bool) {
+    private func updateRecipes(with query: String = "", ingredients: String = "", isNewQuery: Bool) {
         if isNewQuery {
             actualPage = 1
+            lastPage = 0
         }
         let page = String(actualPage)
         
         if actualPage != lastPage {
             self.lastPage = actualPage
             
-            interactor?.fetchRecipes(query: query, ingredients: "", page: page)
+            interactor?.fetchRecipes(query: query, ingredients: ingredients, page: page)
                 .subscribe({ [weak self] (item) in
                     self?.actualPage += 1
                     guard let recipe = item.element else { return }
-                    
-                    var newResults = self?.recipes.value
-                    newResults?.append(contentsOf: recipe.results)
-                    
-                    guard let results = newResults else { return }
-                    self?.recipes.accept(results)
+                    if isNewQuery {
+                        self?.recipes.accept(recipe.results)
+                    } else {
+                        var newResults = self?.recipes.value
+                        newResults?.append(contentsOf: recipe.results)
+                        guard let results = newResults else { return }
+                        self?.recipes.accept(results)
+                    }
                 }).disposed(by: disposeBag)
         }
     }
@@ -69,14 +73,15 @@ class HomePresenter: HomePresenterProtocol {
     }
     
     func fetchMoreRecipes() {
-        updateRecipes(with: actualQuery, isNewQuery: false)
+        updateRecipes(with: actualIngredients, isNewQuery: false)
     }
     
     // MARK: - User Actions
     
-    func searchQuery(queryString: String) {
-        actualQuery = queryString
-        updateRecipes(with: queryString, isNewQuery: true)
+    func searchQuery(queryString: String?) {
+        guard let ingredients = queryString else { return }
+        actualIngredients = ingredients
+        updateRecipes(ingredients: ingredients, isNewQuery: true)
     }
     
     func makeFavourite(recipe: Result) {
