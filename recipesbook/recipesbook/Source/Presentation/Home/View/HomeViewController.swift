@@ -15,7 +15,8 @@ UICollectionViewDelegateFlowLayout,
 HomeRecipeCollectionViewCellDelegate,
 UIScrollViewDelegate {
 
-    @IBOutlet weak var searchBarContentView: UIView!
+    @IBOutlet private weak var informationView: InformationView!
+    @IBOutlet private weak var searchBarContentView: UIView!
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var collectionView: UICollectionView!
     
@@ -28,7 +29,21 @@ UIScrollViewDelegate {
         presenter?.viewDidLoad()
         setupRxCollectionView()
         setupSearchBar()
+        setupTopShadow()
+        setupInformationView()
         enableLargeTitles()
+    }
+    
+    private func setupTopShadow() {
+        collectionView.rx.scrollViewDidScroll.subscribe( { [weak self] event in
+            guard let scrollView = event.element else { return }
+            let showShadow = scrollView.contentOffset.y > 0
+            if  showShadow {
+                self?.searchBarContentView.addBottomShadow()
+            } else {
+                self?.searchBarContentView.removeShadow()
+            }
+        }).disposed(by: disposeBag)
     }
     
     private func setupRxCollectionView() {
@@ -49,7 +64,7 @@ UIScrollViewDelegate {
                 let itemsCount = collectionView?.numberOfItems(inSection: 0),
                 let offset = collectionView?.contentOffset else { return }
             
-            if itemsCount - 2 == indexPath.row &&  offset.y > 0 {
+            if itemsCount - 2 == indexPath.row && offset.y > 0 {
                 collectionView?.stopScrolling()
                 presenter?.fetchMoreRecipes()
             }
@@ -59,22 +74,27 @@ UIScrollViewDelegate {
             guard let recipe = event.element else { return }
             presenter?.openDetail(recipe: recipe)
         }).disposed(by: disposeBag)
-        
-        collectionView.rx.scrollViewDidScroll.subscribe( { [weak self] event in
-            guard let scrollView = event.element else { return }
-            let showShadow = scrollView.contentOffset.y > 0
-            if  showShadow {
-                self?.searchBarContentView.addBottomShadow()
-            } else {
-                self?.searchBarContentView.removeShadow()
-            }
-        }).disposed(by: disposeBag)
     }
     
     private func setupSearchBar() {
         searchBar.placeholder = "Search : onions, carrots ..."
         searchBar.rx.searchButtonClicked.subscribe({ [weak self] event in
             self?.presenter?.searchQuery(queryString: self?.searchBar.text)
+            self?.searchBar.resignFirstResponder()
+        }).disposed(by: disposeBag)
+    }
+    
+    private func setupInformationView() {
+        presenter?.information.subscribe({ [weak self] event in
+            guard let information = event.element else { return }
+            DispatchQueue.main.async {
+                if let info = information {
+                    self?.informationView.setInformation(info)
+                    self?.collectionView.isHidden = true
+                } else {
+                    self?.collectionView.isHidden = false
+                }
+            }
         }).disposed(by: disposeBag)
     }
     

@@ -14,8 +14,9 @@
 		1903FCBD23A0517800A1AC1B /* recipesbookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1903FCBC23A0517800A1AC1B /* recipesbookTests.swift */; };
 		1903FCC823A0517800A1AC1B /* recipesbookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1903FCC723A0517800A1AC1B /* recipesbookUITests.swift */; };
 		1905037323A2EC5400944E78 /* RecipeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1905037223A2EC5400944E78 /* RecipeRepository.swift */; };
-		192186A423A179EB00FFC10A /* UIColor+palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192186A323A179EB00FFC10A /* UIColor+palette.swift */; };
 		192186A623A17A6500FFC10A /* UIFont+fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192186A523A17A6500FFC10A /* UIFont+fonts.swift */; };
+		1965E1A423A6A8AE007283FD /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1965E1A323A6A8AE007283FD /* InformationView.swift */; };
+		1965E1AE23A6A9F4007283FD /* InformationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1965E1AD23A6A9F4007283FD /* InformationView.xib */; };
 		1967250723A054C5005C6D17 /* RecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196724F623A054C5005C6D17 /* RecipeResponse.swift */; };
 		1967250823A054C5005C6D17 /* HomeRecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196724FB23A054C5005C6D17 /* HomeRecipeCollectionViewCell.swift */; };
 		1967250923A054C5005C6D17 /* HomeRecipeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196724FC23A054C5005C6D17 /* HomeRecipeCollectionViewCell.xib */; };
@@ -30,10 +31,10 @@
 		19E469DF23A4EE6F00D5193A /* RecipeDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E469DE23A4EE6F00D5193A /* RecipeDetailInteractor.swift */; };
 		19E469E123A4EE8E00D5193A /* RecipeDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E469E023A4EE8E00D5193A /* RecipeDetailPresenter.swift */; };
 		19E469E323A4EEE100D5193A /* RecipeDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E469E223A4EEE100D5193A /* RecipeDetailRouter.swift */; };
-		19E469EA23A65B6800D5193A /* UIImageView+imageFromUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E469E923A65B6800D5193A /* UIImageView+imageFromUrl.swift */; };
-		19E469EC23A6626200D5193A /* UIView+shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E469EB23A6626200D5193A /* UIView+shadow.swift */; };
+		19E469EA23A65B6800D5193A /* UIImageView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E469E923A65B6800D5193A /* UIImageView+extension.swift */; };
+		19E469EC23A6626200D5193A /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E469EB23A6626200D5193A /* UIView+extension.swift */; };
 		19E94DF523A1AC9700FFDDA2 /* UIScrollView+rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E94DF423A1AC9700FFDDA2 /* UIScrollView+rx.swift */; };
-		19E94DF723A1B61F00FFDDA2 /* UIScrollView+StopScrolling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E94DF623A1B61F00FFDDA2 /* UIScrollView+StopScrolling.swift */; };
+		19E94DF723A1B61F00FFDDA2 /* UIScrollView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E94DF623A1B61F00FFDDA2 /* UIScrollView+extension.swift */; };
 		7513C9467D01221A334B47E1 /* Pods_recipesbookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5083766201631A1A7B52D62 /* Pods_recipesbookTests.framework */; };
 		CBA6085CB64A785B15A4024B /* Pods_recipesbook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF1E3A988A03C0EAF3CD8C5 /* Pods_recipesbook.framework */; };
 		EAB450D181E736E9AE29F2B6 /* Pods_recipesbook_recipesbookUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916EE0E5C5B3B94E1542A613 /* Pods_recipesbook_recipesbookUITests.framework */; };
@@ -70,8 +71,9 @@
 		1903FCC723A0517800A1AC1B /* recipesbookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipesbookUITests.swift; sourceTree = "<group>"; };
 		1903FCC923A0517800A1AC1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1905037223A2EC5400944E78 /* RecipeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRepository.swift; sourceTree = "<group>"; };
-		192186A323A179EB00FFC10A /* UIColor+palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+palette.swift"; sourceTree = "<group>"; };
 		192186A523A17A6500FFC10A /* UIFont+fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+fonts.swift"; sourceTree = "<group>"; };
+		1965E1A323A6A8AE007283FD /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
+		1965E1AD23A6A9F4007283FD /* InformationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationView.xib; sourceTree = "<group>"; };
 		196724F623A054C5005C6D17 /* RecipeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeResponse.swift; sourceTree = "<group>"; };
 		196724FB23A054C5005C6D17 /* HomeRecipeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRecipeCollectionViewCell.swift; sourceTree = "<group>"; };
 		196724FC23A054C5005C6D17 /* HomeRecipeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeRecipeCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -86,10 +88,10 @@
 		19E469DE23A4EE6F00D5193A /* RecipeDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailInteractor.swift; sourceTree = "<group>"; };
 		19E469E023A4EE8E00D5193A /* RecipeDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailPresenter.swift; sourceTree = "<group>"; };
 		19E469E223A4EEE100D5193A /* RecipeDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailRouter.swift; sourceTree = "<group>"; };
-		19E469E923A65B6800D5193A /* UIImageView+imageFromUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+imageFromUrl.swift"; sourceTree = "<group>"; };
-		19E469EB23A6626200D5193A /* UIView+shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+shadow.swift"; sourceTree = "<group>"; };
+		19E469E923A65B6800D5193A /* UIImageView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+extension.swift"; sourceTree = "<group>"; };
+		19E469EB23A6626200D5193A /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
 		19E94DF423A1AC9700FFDDA2 /* UIScrollView+rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+rx.swift"; sourceTree = "<group>"; };
-		19E94DF623A1B61F00FFDDA2 /* UIScrollView+StopScrolling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+StopScrolling.swift"; sourceTree = "<group>"; };
+		19E94DF623A1B61F00FFDDA2 /* UIScrollView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+extension.swift"; sourceTree = "<group>"; };
 		7A8CBEB435F3BE1A324943E3 /* Pods-recipesbook-recipesbookUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-recipesbook-recipesbookUITests.release.xcconfig"; path = "Target Support Files/Pods-recipesbook-recipesbookUITests/Pods-recipesbook-recipesbookUITests.release.xcconfig"; sourceTree = "<group>"; };
 		80C12422E073104975FAADCB /* Pods-recipesbookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-recipesbookTests.release.xcconfig"; path = "Target Support Files/Pods-recipesbookTests/Pods-recipesbookTests.release.xcconfig"; sourceTree = "<group>"; };
 		916EE0E5C5B3B94E1542A613 /* Pods_recipesbook_recipesbookUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipesbook_recipesbookUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +192,31 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		1965E19F23A6A852007283FD /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				1965E1A223A6A87A007283FD /* ResultInfoView */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		1965E1A023A6A864007283FD /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				19E94DF423A1AC9700FFDDA2 /* UIScrollView+rx.swift */,
+			);
+			path = Rx;
+			sourceTree = "<group>";
+		};
+		1965E1A223A6A87A007283FD /* ResultInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				1965E1A323A6A8AE007283FD /* InformationView.swift */,
+				1965E1AD23A6A9F4007283FD /* InformationView.xib */,
+			);
+			path = ResultInfoView;
+			sourceTree = "<group>";
+		};
 		196724F323A054C5005C6D17 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +246,7 @@
 		196724F723A054C5005C6D17 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				1965E19F23A6A852007283FD /* Components */,
 				19E469D523A4ED7200D5193A /* Detail */,
 				196724F823A054C5005C6D17 /* Home */,
 				1967250623A054C5005C6D17 /* Extensions */,
@@ -292,12 +320,11 @@
 		1967250623A054C5005C6D17 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				192186A323A179EB00FFC10A /* UIColor+palette.swift */,
+				1965E1A023A6A864007283FD /* Rx */,
 				192186A523A17A6500FFC10A /* UIFont+fonts.swift */,
-				19E94DF423A1AC9700FFDDA2 /* UIScrollView+rx.swift */,
-				19E94DF623A1B61F00FFDDA2 /* UIScrollView+StopScrolling.swift */,
-				19E469E923A65B6800D5193A /* UIImageView+imageFromUrl.swift */,
-				19E469EB23A6626200D5193A /* UIView+shadow.swift */,
+				19E94DF623A1B61F00FFDDA2 /* UIScrollView+extension.swift */,
+				19E469E923A65B6800D5193A /* UIImageView+extension.swift */,
+				19E469EB23A6626200D5193A /* UIView+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -490,6 +517,7 @@
 				19E469DD23A4EDC800D5193A /* RecipeDetailViewController.xib in Resources */,
 				1903FCAF23A0517800A1AC1B /* Assets.xcassets in Resources */,
 				19E469D423A4156A00D5193A /* HomeViewController.xib in Resources */,
+				1965E1AE23A6A9F4007283FD /* InformationView.xib in Resources */,
 				1967250923A054C5005C6D17 /* HomeRecipeCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -618,7 +646,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				192186A423A179EB00FFC10A /* UIColor+palette.swift in Sources */,
 				192186A623A17A6500FFC10A /* UIFont+fonts.swift in Sources */,
 				19E94DF523A1AC9700FFDDA2 /* UIScrollView+rx.swift in Sources */,
 				1905037323A2EC5400944E78 /* RecipeRepository.swift in Sources */,
@@ -626,15 +653,16 @@
 				1967250723A054C5005C6D17 /* RecipeResponse.swift in Sources */,
 				1967250E23A054C5005C6D17 /* HomePresenter.swift in Sources */,
 				19E469E123A4EE8E00D5193A /* RecipeDetailPresenter.swift in Sources */,
-				19E469EC23A6626200D5193A /* UIView+shadow.swift in Sources */,
+				19E469EC23A6626200D5193A /* UIView+extension.swift in Sources */,
 				19E469DF23A4EE6F00D5193A /* RecipeDetailInteractor.swift in Sources */,
+				1965E1A423A6A8AE007283FD /* InformationView.swift in Sources */,
 				1967250823A054C5005C6D17 /* HomeRecipeCollectionViewCell.swift in Sources */,
 				1903FCA823A0517500A1AC1B /* SceneDelegate.swift in Sources */,
 				19E469E323A4EEE100D5193A /* RecipeDetailRouter.swift in Sources */,
 				1967250C23A054C5005C6D17 /* HomeRouter.swift in Sources */,
 				1967250D23A054C5005C6D17 /* ServiceError.swift in Sources */,
-				19E469EA23A65B6800D5193A /* UIImageView+imageFromUrl.swift in Sources */,
-				19E94DF723A1B61F00FFDDA2 /* UIScrollView+StopScrolling.swift in Sources */,
+				19E469EA23A65B6800D5193A /* UIImageView+extension.swift in Sources */,
+				19E94DF723A1B61F00FFDDA2 /* UIScrollView+extension.swift in Sources */,
 				1967250A23A054C5005C6D17 /* HomeViewController.swift in Sources */,
 				19E469DC23A4EDC800D5193A /* RecipeDetailViewController.swift in Sources */,
 				1967250B23A054C5005C6D17 /* HomeInteractor.swift in Sources */,

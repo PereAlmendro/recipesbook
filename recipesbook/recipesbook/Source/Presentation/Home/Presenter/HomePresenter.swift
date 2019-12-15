@@ -11,6 +11,7 @@ import RxCocoa
 import RxSwift
 
 protocol HomePresenterProtocol {
+    var information: BehaviorRelay<InformationModel?> { get }
     var recipes: BehaviorRelay<[Result]> { get }
     func viewDidLoad()
     func makeFavourite(recipe: Result)
@@ -25,11 +26,12 @@ class HomePresenter: HomePresenterProtocol {
     private let disposeBag = DisposeBag()
     private var interactor: HomeInteractorProtocol? = nil
     private var router: HomeRouterProtocol? = nil
-    private var actualIngredients: String = "a" // "a" will be the first search
+    private var actualIngredients: String = ""
     private var actualPage: Int = 1
     private var lastPage: Int = 0
     
     var recipes: BehaviorRelay<[Result]> = BehaviorRelay<[Result]>(value: [])
+    var information: BehaviorRelay<InformationModel?> = BehaviorRelay<InformationModel?>(value: nil)
     
     init(interactor: HomeInteractorProtocol, router: HomeRouterProtocol) {
         self.interactor = interactor
@@ -37,7 +39,7 @@ class HomePresenter: HomePresenterProtocol {
     }
     
     func viewDidLoad() {
-        updateRecipes(with: actualIngredients, isNewQuery: true)
+        showInitialInformation()
     }
     
     private func updateRecipes(with query: String = "", ingredients: String = "", isNewQuery: Bool) {
@@ -45,6 +47,7 @@ class HomePresenter: HomePresenterProtocol {
             actualPage = 1
             lastPage = 0
         }
+        
         let page = String(actualPage)
         
         if actualPage != lastPage {
@@ -54,23 +57,37 @@ class HomePresenter: HomePresenterProtocol {
                 .subscribe({ [weak self] (item) in
                     self?.actualPage += 1
                     guard let recipe = item.element else { return }
-                    if isNewQuery {
-                        self?.recipes.accept(recipe.results)
+                    self?.updateRecipes(with: recipe.results)
+                    if recipe.results.isEmpty {
+                        self?.showNoResultsInformation()
                     } else {
-                        var newResults = self?.recipes.value
-                        newResults?.append(contentsOf: recipe.results)
-                        guard let results = newResults else { return }
-                        self?.recipes.accept(results)
+                        self?.information.accept(nil)
                     }
                 }).disposed(by: disposeBag)
         }
     }
     
-    // MARK: - infinite scrolling
-    
-    func prefetchItems(at IndexPaths: [IndexPath]) {
-        
+    private func showInitialInformation() {
+        let info = InformationModel(image: UIImage(named: "recipes"),
+                                    title: "What to cook?",
+                                    description: "Type in the searchbox the ingredients you have at home")
+        information.accept(info)
     }
+    
+    private func showNoResultsInformation() {
+        let info = InformationModel(image: UIImage(named: "noResultsImage"),
+                                    title: "No results",
+                                    description: "Nothing matches your search")
+        information.accept(info)
+    }
+    
+    private func updateRecipes(with recipes: [Result]) {
+        var newRecipes = self.recipes.value
+        newRecipes.append(contentsOf: recipes)
+        self.recipes.accept(newRecipes)
+    }
+    
+    // MARK: - infinite scrolling
     
     func fetchMoreRecipes() {
         updateRecipes(with: actualIngredients, isNewQuery: false)
@@ -79,9 +96,13 @@ class HomePresenter: HomePresenterProtocol {
     // MARK: - User Actions
     
     func searchQuery(queryString: String?) {
-        guard let ingredients = queryString else { return }
-        actualIngredients = ingredients
-        updateRecipes(ingredients: ingredients, isNewQuery: true)
+        if let ingredients = queryString, !ingredients.isEmpty{
+            actualIngredients = ingredients
+            updateRecipes(ingredients: ingredients, isNewQuery: true)
+        } else {
+            self.showInitialInformation()
+        }
+        
     }
     
     func makeFavourite(recipe: Result) {
