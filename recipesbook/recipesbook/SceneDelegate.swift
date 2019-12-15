@@ -26,7 +26,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let navigationController = UINavigationController(rootViewController: homeViewController)
             
             let homeRouter = HomeRouter(navigationController:navigationController)
-            let homeInteractor = HomeInteractor()
+            let recipeRepository = RecipeRepository()
+            let homeInteractor = HomeInteractor(recipeRepository: recipeRepository)
             let homePresenter = HomePresenter(interactor: homeInteractor, router: homeRouter)
             homeViewController.presenter = homePresenter
             

@@ -18,15 +18,15 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="0p3-mp-ugD">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5H-dx-TMW" customClass="InformationView" customModule="recipesbook" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                    <rect key="frame" x="0.0" y="56" width="414" height="718"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Dh5-xN-v03">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="56" width="414" height="718"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2jc-Gw-3TY">
                         <size key="itemSize" width="50" height="50"/>
@@ -37,7 +37,7 @@
                     <cells/>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oiZ-7P-Jra">
-                    <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                     <subviews>
                         <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqA-8R-tZO">
                             <rect key="frame" x="20" y="0.0" width="374" height="56"/>
@@ -46,10 +46,10 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstItem="PqA-8R-tZO" firstAttribute="leading" secondItem="oiZ-7P-Jra" secondAttribute="leading" constant="20" id="Gbn-Qp-oqU"/>
-                        <constraint firstItem="PqA-8R-tZO" firstAttribute="top" secondItem="oiZ-7P-Jra" secondAttribute="top" id="NhG-86-3W0"/>
-                        <constraint firstAttribute="bottom" secondItem="PqA-8R-tZO" secondAttribute="bottom" id="agK-ma-qxB"/>
-                        <constraint firstAttribute="trailing" secondItem="PqA-8R-tZO" secondAttribute="trailing" constant="20" id="rPf-SK-cih"/>
+                        <constraint firstItem="PqA-8R-tZO" firstAttribute="leading" secondItem="oiZ-7P-Jra" secondAttribute="leading" constant="20" id="9qO-UM-Asi"/>
+                        <constraint firstAttribute="bottom" secondItem="PqA-8R-tZO" secondAttribute="bottom" id="kso-ux-80N"/>
+                        <constraint firstItem="PqA-8R-tZO" firstAttribute="top" secondItem="oiZ-7P-Jra" secondAttribute="top" id="oYP-8X-srf"/>
+                        <constraint firstAttribute="trailing" secondItem="PqA-8R-tZO" secondAttribute="trailing" constant="20" id="v0m-NU-YDA"/>
                     </constraints>
                 </view>
             </subviews>
@@ -59,17 +59,18 @@
                 <constraint firstItem="pTs-ZO-mwk" firstAttribute="trailing" secondItem="oiZ-7P-Jra" secondAttribute="trailing" id="1ny-Tc-WT0"/>
                 <constraint firstItem="pTs-ZO-mwk" firstAttribute="trailing" secondItem="e5H-dx-TMW" secondAttribute="trailing" id="2p8-l5-c6W"/>
                 <constraint firstItem="pTs-ZO-mwk" firstAttribute="bottom" secondItem="Dh5-xN-v03" secondAttribute="bottom" id="7NH-FV-NsD"/>
+                <constraint firstItem="Dh5-xN-v03" firstAttribute="top" secondItem="oiZ-7P-Jra" secondAttribute="bottom" id="Ct6-9O-Wa1"/>
                 <constraint firstItem="oiZ-7P-Jra" firstAttribute="leading" secondItem="pTs-ZO-mwk" secondAttribute="leading" id="Ft9-6y-kf1"/>
                 <constraint firstItem="e5H-dx-TMW" firstAttribute="top" secondItem="oiZ-7P-Jra" secondAttribute="bottom" id="Ukf-PO-kUC"/>
                 <constraint firstItem="Dh5-xN-v03" firstAttribute="leading" secondItem="pTs-ZO-mwk" secondAttribute="leading" id="Wan-bQ-KK0"/>
                 <constraint firstItem="e5H-dx-TMW" firstAttribute="leading" secondItem="pTs-ZO-mwk" secondAttribute="leading" id="Zoq-MJ-vV4"/>
                 <constraint firstItem="oiZ-7P-Jra" firstAttribute="top" secondItem="pTs-ZO-mwk" secondAttribute="top" id="h3E-P7-JSV"/>
-                <constraint firstItem="Dh5-xN-v03" firstAttribute="top" secondItem="pTs-ZO-mwk" secondAttribute="top" id="oEO-5P-mpQ"/>
                 <constraint firstItem="pTs-ZO-mwk" firstAttribute="bottom" secondItem="e5H-dx-TMW" secondAttribute="bottom" id="yH1-41-Rxn"/>
                 <constraint firstItem="Dh5-xN-v03" firstAttribute="width" secondItem="0p3-mp-ugD" secondAttribute="width" id="zFn-Qq-jhv"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <viewLayoutGuide key="safeArea" id="pTs-ZO-mwk"/>
-            <point key="canvasLocation" x="138" y="-503"/>
+            <point key="canvasLocation" x="137.68115942028987" y="-503.57142857142856"/>
         </view>
     </objects>
 </document>

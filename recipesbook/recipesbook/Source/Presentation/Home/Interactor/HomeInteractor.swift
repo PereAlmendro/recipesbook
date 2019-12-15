@@ -18,6 +18,11 @@ class HomeInteractor: HomeInteractorProtocol {
     
     private let baseUrl: String = "http://www.recipepuppy.com/api/?"
     private let sesion: URLSession = URLSession(configuration: .default)
+    private let recipeRepository: RecipeRepository
+    
+    init(recipeRepository: RecipeRepository) {
+        self.recipeRepository = recipeRepository
+    }
     
     func fetchRecipes(query: String?, ingredients: String?, page: String?) -> Observable<Recipe> {
         return recipeRepository.fetchRecipes(query: query, ingredients: ingredients, page: page)
