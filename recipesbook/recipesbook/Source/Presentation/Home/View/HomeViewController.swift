@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 
 class HomeViewController: UIViewController,
+UICollectionViewDelegateFlowLayout,
 HomeRecipeCollectionViewCellDelegate,
 UIScrollViewDelegate {
 
@@ -31,9 +32,7 @@ UIScrollViewDelegate {
         collectionView.register(UINib(nibName: HomeRecipeCollectionViewCell.cellIdentifier, bundle: nil),
                                 forCellWithReuseIdentifier: HomeRecipeCollectionViewCell.cellIdentifier)
         
-        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.estimatedItemSize = CGSize(width: UIScreen.main.bounds.size.width, height: 300)
-        }
+        collectionView.delegate = self
         
         presenter?.recipes.bind(to:
             collectionView.rx.items(cellIdentifier: HomeRecipeCollectionViewCell.cellIdentifier,
@@ -48,6 +47,7 @@ UIScrollViewDelegate {
                 let offset = collectionView?.contentOffset else { return }
             
             if itemsCount - 2 == indexPath.row &&  offset.y > 0 {
+                collectionView?.stopScrolling()
                 presenter?.fetchMoreRecipes()
             }
         }).disposed(by: disposeBag)
@@ -68,5 +68,14 @@ UIScrollViewDelegate {
     
     @IBAction func navigationBarRightButtonAction(_ sender: Any) {
         presenter?.navigationBarRightButtonAction()
+    }
+    
+    // MARK: - UICollectionViewDelegate
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenWidth = UIScreen.main.bounds.size.width
+        return CGSize(width: screenWidth, height: 350)
     }
 }
