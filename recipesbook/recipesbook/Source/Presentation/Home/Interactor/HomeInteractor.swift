@@ -20,7 +20,6 @@ class HomeInteractor: HomeInteractorProtocol {
     private let sesion: URLSession = URLSession(configuration: .default)
     
     func fetchRecipes(query: String?, ingredients: String?, page: String?) -> Observable<Recipe> {
-        return RecipeRepository().fetchRecipes(query: query, ingredients: ingredients, page: page)
-        // TODO : Parse Service models
+        return recipeRepository.fetchRecipes(query: query, ingredients: ingredients, page: page)
     }
 }

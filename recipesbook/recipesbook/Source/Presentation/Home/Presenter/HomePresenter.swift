@@ -96,6 +96,10 @@ class HomePresenter: HomePresenterProtocol {
     // MARK: - User Actions
     
     func searchQuery(queryString: String?) {
+        // Clear actual data
+        recipes.accept([])
+        
+        // New request
         if let ingredients = queryString, !ingredients.isEmpty{
             actualIngredients = ingredients
             updateRecipes(ingredients: ingredients, isNewQuery: true)

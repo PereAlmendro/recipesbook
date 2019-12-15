@@ -26,8 +26,7 @@ extension UIView {
     
     func loadNib(nibName: String?) -> UIView {
         let bundle = Bundle(for: type(of: self))
-        let name = nibName == nil ? type(of: self).description().components(separatedBy: ".").last! : nibName
-        let nib = UINib(nibName: name!, bundle: bundle)
+        let nib = UINib(nibName: nibName!, bundle: bundle)
         return nib.instantiate(withOwner: self, options: nil).first as! UIView
     }
     

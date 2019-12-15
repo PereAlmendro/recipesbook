@@ -10,16 +10,16 @@ import Foundation
 
 // MARK: - Recipe
 struct Recipe: Codable {
-    let title: String
-    let version: Double
-    let href: String
-    let results: [Result]
+    var title: String
+    var version: Double
+    var href: String
+    var results: [Result]
 }
 
 // MARK: - Result
-struct Result: Codable {
-    let title: String
-    let href: String
-    let ingredients: String
-    let thumbnail: String
+struct Result: Codable, Equatable {
+    var title: String
+    var href: String
+    var ingredients: String
+    var thumbnail: String
 }

@@ -25,7 +25,6 @@ UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Recipes Book"
         presenter?.viewDidLoad()
         setupRxCollectionView()
         setupSearchBar()
@@ -107,6 +106,7 @@ UIScrollViewDelegate {
     // MARK: - NavBar
     
     private func enableLargeTitles() {
+        title = "Recipes Book"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
