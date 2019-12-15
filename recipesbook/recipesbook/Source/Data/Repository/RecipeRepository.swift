@@ -53,7 +53,7 @@ class RecipeRepository {
                 let error = ServiceError(localizedDescription: "Unable to fetch recipe")
                 observer.onError(error)
             }
-            return Disposables.create { }
+            return Disposables.create()
         })
     }
     
@@ -73,7 +73,7 @@ class RecipeRepository {
                     observer.onError(error)
                 }
             }
-            return Disposables.create { }
+            return Disposables.create()
         })
     }
     
@@ -85,7 +85,7 @@ class RecipeRepository {
                 }
                 observer.onNext(favourites)
             }
-            return Disposables.create { }
+            return Disposables.create()
         })
     }
     

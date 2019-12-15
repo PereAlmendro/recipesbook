@@ -109,6 +109,12 @@ UIScrollViewDelegate {
         title = "Recipes Book"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
+        let favourites = UIBarButtonItem(title: "go", style: .plain, target: self, action: #selector(goToFavourites(_:)))
+        favourites.image = UIImage(systemName: "heart.fill")
+        favourites.tintColor = .systemRed
+
+        navigationItem.rightBarButtonItems = [favourites]
     }
     
     @objc func goToFavourites(_ sender: Any) {

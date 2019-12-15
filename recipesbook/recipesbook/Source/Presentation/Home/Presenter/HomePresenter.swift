@@ -110,7 +110,15 @@ class HomePresenter: HomePresenterProtocol {
     }
     
     func makeFavourite(recipe: Result) {
-        // TODO: Save locally
+        interactor?.saveFavourite(recipe: recipe).subscribe({ [router] event in
+            if let error = event.error {
+                router?.showAlert(title: "Something went wrong", message: error.localizedDescription,
+                action: "Close", style: .default, handler: nil)
+            } else {
+                router?.showAlert(title: "Recipe added to favourites", message: nil,
+                                  action: "Close", style: .default, handler: nil)
+            }
+        }).disposed(by: disposeBag)
     }
     
     func goToFavourites() {
