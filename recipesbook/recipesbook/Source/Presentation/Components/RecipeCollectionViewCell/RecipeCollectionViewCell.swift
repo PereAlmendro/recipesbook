@@ -1,5 +1,5 @@
 //
-//  HomeRecipeCollectionViewCell.swift
+//  RecipeCollectionViewCell.swift
 //  recipesbook
 //
 //  Created by Pere Almendro on 09/12/2019.
@@ -8,23 +8,17 @@
 
 import UIKit
 
-protocol HomeRecipeCollectionViewCellDelegate: AnyObject {
+protocol RecipeCollectionViewCellDelegate: AnyObject {
     func makeFavouriteAction(_ recipe: Result)
 }
 
-struct HomeRecipeCollectionViewCellModel {
-    let thumbnail: URL
-    let name: String
-    let ingredients: String
-}
-
-class HomeRecipeCollectionViewCell: UICollectionViewCell {
+class RecipeCollectionViewCell: UICollectionViewCell {
     
     static var cellIdentifier: String = {
-        return String(describing: HomeRecipeCollectionViewCell.self)
+        return String(describing: RecipeCollectionViewCell.self)
     }()
     
-    private weak var delegate: HomeRecipeCollectionViewCellDelegate?
+    private weak var delegate: RecipeCollectionViewCellDelegate?
     private let contentMargins: CGFloat = 5
     
     @IBOutlet weak var recipeImageView: UIImageView!
@@ -45,7 +39,7 @@ class HomeRecipeCollectionViewCell: UICollectionViewCell {
         addBottomShadow()
     }
     
-    func setupCell(recipe: Result, delegate: HomeRecipeCollectionViewCellDelegate) {
+    func setupCell(recipe: Result, delegate: RecipeCollectionViewCellDelegate) {
         self.delegate = delegate
         self.recipe = recipe
         

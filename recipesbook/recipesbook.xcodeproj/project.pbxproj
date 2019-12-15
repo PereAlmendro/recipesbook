@@ -18,8 +18,8 @@
 		1965E1A423A6A8AE007283FD /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1965E1A323A6A8AE007283FD /* InformationView.swift */; };
 		1965E1AE23A6A9F4007283FD /* InformationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1965E1AD23A6A9F4007283FD /* InformationView.xib */; };
 		1967250723A054C5005C6D17 /* RecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196724F623A054C5005C6D17 /* RecipeResponse.swift */; };
-		1967250823A054C5005C6D17 /* HomeRecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196724FB23A054C5005C6D17 /* HomeRecipeCollectionViewCell.swift */; };
-		1967250923A054C5005C6D17 /* HomeRecipeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196724FC23A054C5005C6D17 /* HomeRecipeCollectionViewCell.xib */; };
+		1967250823A054C5005C6D17 /* RecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196724FB23A054C5005C6D17 /* RecipeCollectionViewCell.swift */; };
+		1967250923A054C5005C6D17 /* RecipeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196724FC23A054C5005C6D17 /* RecipeCollectionViewCell.xib */; };
 		1967250A23A054C5005C6D17 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196724FD23A054C5005C6D17 /* HomeViewController.swift */; };
 		1967250B23A054C5005C6D17 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196724FF23A054C5005C6D17 /* HomeInteractor.swift */; };
 		1967250C23A054C5005C6D17 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1967250123A054C5005C6D17 /* HomeRouter.swift */; };
@@ -75,8 +75,8 @@
 		1965E1A323A6A8AE007283FD /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		1965E1AD23A6A9F4007283FD /* InformationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationView.xib; sourceTree = "<group>"; };
 		196724F623A054C5005C6D17 /* RecipeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeResponse.swift; sourceTree = "<group>"; };
-		196724FB23A054C5005C6D17 /* HomeRecipeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRecipeCollectionViewCell.swift; sourceTree = "<group>"; };
-		196724FC23A054C5005C6D17 /* HomeRecipeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeRecipeCollectionViewCell.xib; sourceTree = "<group>"; };
+		196724FB23A054C5005C6D17 /* RecipeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewCell.swift; sourceTree = "<group>"; };
+		196724FC23A054C5005C6D17 /* RecipeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeCollectionViewCell.xib; sourceTree = "<group>"; };
 		196724FD23A054C5005C6D17 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		196724FF23A054C5005C6D17 /* HomeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		1967250123A054C5005C6D17 /* HomeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
@@ -195,6 +195,7 @@
 		1965E19F23A6A852007283FD /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				196724FA23A054C5005C6D17 /* RecipeCollectionViewCell */,
 				1965E1A223A6A87A007283FD /* ResultInfoView */,
 			);
 			path = Components;
@@ -215,6 +216,45 @@
 				1965E1AD23A6A9F4007283FD /* InformationView.xib */,
 			);
 			path = ResultInfoView;
+			sourceTree = "<group>";
+		};
+		1965E1AF23A6F7FE007283FD /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				1965E1B323A6F820007283FD /* View */,
+				1965E1B223A6F81B007283FD /* Router */,
+				1965E1B123A6F812007283FD /* Interactor */,
+				1965E1B023A6F80B007283FD /* Presenter */,
+			);
+			path = Favourites;
+			sourceTree = "<group>";
+		};
+		1965E1B023A6F80B007283FD /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		1965E1B123A6F812007283FD /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		1965E1B223A6F81B007283FD /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		1965E1B323A6F820007283FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		196724F323A054C5005C6D17 /* Source */ = {
@@ -247,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				1965E19F23A6A852007283FD /* Components */,
+				1965E1AF23A6F7FE007283FD /* Favourites */,
 				19E469D523A4ED7200D5193A /* Detail */,
 				196724F823A054C5005C6D17 /* Home */,
 				1967250623A054C5005C6D17 /* Extensions */,
@@ -257,10 +298,10 @@
 		196724F823A054C5005C6D17 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				1967250423A054C5005C6D17 /* Presenter */,
 				196724F923A054C5005C6D17 /* View */,
-				196724FE23A054C5005C6D17 /* Interactor */,
 				1967250023A054C5005C6D17 /* Router */,
+				196724FE23A054C5005C6D17 /* Interactor */,
+				1967250423A054C5005C6D17 /* Presenter */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -268,20 +309,19 @@
 		196724F923A054C5005C6D17 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				196724FA23A054C5005C6D17 /* HomeRecipeCollectionViewCell */,
 				196724FD23A054C5005C6D17 /* HomeViewController.swift */,
 				19E469D323A4156A00D5193A /* HomeViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		196724FA23A054C5005C6D17 /* HomeRecipeCollectionViewCell */ = {
+		196724FA23A054C5005C6D17 /* RecipeCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				196724FB23A054C5005C6D17 /* HomeRecipeCollectionViewCell.swift */,
-				196724FC23A054C5005C6D17 /* HomeRecipeCollectionViewCell.xib */,
+				196724FB23A054C5005C6D17 /* RecipeCollectionViewCell.swift */,
+				196724FC23A054C5005C6D17 /* RecipeCollectionViewCell.xib */,
 			);
-			path = HomeRecipeCollectionViewCell;
+			path = RecipeCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		196724FE23A054C5005C6D17 /* Interactor */ = {
@@ -518,7 +558,7 @@
 				1903FCAF23A0517800A1AC1B /* Assets.xcassets in Resources */,
 				19E469D423A4156A00D5193A /* HomeViewController.xib in Resources */,
 				1965E1AE23A6A9F4007283FD /* InformationView.xib in Resources */,
-				1967250923A054C5005C6D17 /* HomeRecipeCollectionViewCell.xib in Resources */,
+				1967250923A054C5005C6D17 /* RecipeCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,7 +696,7 @@
 				19E469EC23A6626200D5193A /* UIView+extension.swift in Sources */,
 				19E469DF23A4EE6F00D5193A /* RecipeDetailInteractor.swift in Sources */,
 				1965E1A423A6A8AE007283FD /* InformationView.swift in Sources */,
-				1967250823A054C5005C6D17 /* HomeRecipeCollectionViewCell.swift in Sources */,
+				1967250823A054C5005C6D17 /* RecipeCollectionViewCell.swift in Sources */,
 				1903FCA823A0517500A1AC1B /* SceneDelegate.swift in Sources */,
 				19E469E323A4EEE100D5193A /* RecipeDetailRouter.swift in Sources */,
 				1967250C23A054C5005C6D17 /* HomeRouter.swift in Sources */,

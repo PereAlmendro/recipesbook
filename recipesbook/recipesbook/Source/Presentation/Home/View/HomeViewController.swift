@@ -12,7 +12,7 @@ import RxCocoa
 
 class HomeViewController: UIViewController,
 UICollectionViewDelegateFlowLayout,
-HomeRecipeCollectionViewCellDelegate,
+RecipeCollectionViewCellDelegate,
 UIScrollViewDelegate {
 
     @IBOutlet private weak var informationView: InformationView!
@@ -46,14 +46,14 @@ UIScrollViewDelegate {
     }
     
     private func setupRxCollectionView() {
-        collectionView.register(UINib(nibName: HomeRecipeCollectionViewCell.cellIdentifier, bundle: nil),
-                                forCellWithReuseIdentifier: HomeRecipeCollectionViewCell.cellIdentifier)
+        collectionView.register(UINib(nibName: RecipeCollectionViewCell.cellIdentifier, bundle: nil),
+                                forCellWithReuseIdentifier: RecipeCollectionViewCell.cellIdentifier)
         
         collectionView.delegate = self
         
         presenter?.recipes.bind(to:
-            collectionView.rx.items(cellIdentifier: HomeRecipeCollectionViewCell.cellIdentifier,
-                                    cellType: HomeRecipeCollectionViewCell.self)) { [weak self] (_, element ,cell) in
+            collectionView.rx.items(cellIdentifier: RecipeCollectionViewCell.cellIdentifier,
+                                    cellType: RecipeCollectionViewCell.self)) { [weak self] (_, element ,cell) in
                                         guard let strongSelf = self else { return }
                                         cell.setupCell(recipe: element, delegate: strongSelf)
         }.disposed(by: disposeBag)
@@ -97,7 +97,7 @@ UIScrollViewDelegate {
         }).disposed(by: disposeBag)
     }
     
-    // MARK: - HomeRecipeCollectionViewCellDelegate
+    // MARK: - RecipeCollectionViewCellDelegate
     
     func makeFavouriteAction(_ recipe: Result) {
         presenter?.makeFavourite(recipe: recipe)
