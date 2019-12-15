@@ -29,9 +29,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let homeInteractor = HomeInteractor()
             let homePresenter = HomePresenter(interactor: homeInteractor, router: homeRouter)
             homeViewController.presenter = homePresenter
-
-            let navigation = UINavigationController(rootViewController: homeViewController)
-            window.rootViewController = navigation
+            
+            window.rootViewController = navigationController
 
             self.window = window
             window.makeKeyAndVisible()

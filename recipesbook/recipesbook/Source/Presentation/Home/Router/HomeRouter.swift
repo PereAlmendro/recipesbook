@@ -22,6 +22,13 @@ class HomeRouter: HomeRouterProtocol {
     }
     
     func openRecipeDetailWithRequest(_ request: String) {
-        // TODO : Open detail web VIew
+        let recipeDetail = RecipeDetailViewController()
+        let recipeDetailInteractor = RecipeDetailInteractor()
+        let recipeDetailRouter = RecipeDetailRouter(navigationController: navigationController)
+        let recipeDetailPresenter = RecipeDetailPresenter(interactor: recipeDetailInteractor,
+                                                          router: recipeDetailRouter,
+                                                          detailUrl: request)
+        recipeDetail.presenter = recipeDetailPresenter
+        navigationController?.present(recipeDetail, animated: true, completion: nil)
     }
 }
