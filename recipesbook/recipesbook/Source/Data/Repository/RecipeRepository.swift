@@ -9,7 +9,15 @@
 import RxSwift
 import RxCocoa
 
+protocol RecipeRepositoryProtocol {
+    func fetchRecipes(query: String?, ingredients: String?, page: String?) -> Observable<Recipe>
+    func fetchFavourites() -> Observable<Recipe>
+    func saveFavourite(recipe: Result) -> Observable<Recipe>
+    func deleteFavourite(recipe: Result) -> Observable<Recipe>
+}
+
 class RecipeRepository {
+    private let favouritesUserDefaultsKey = "favouritesUserdefaultsKey"
     private let baseUrl: String = "http://www.recipepuppy.com/api/?"
     private let sesion: URLSession = URLSession(configuration: .default)
     
@@ -33,6 +41,73 @@ class RecipeRepository {
             } else {
                 throw RxCocoaURLError.httpRequestFailed(response: response, data: data)
             }
+        }
+    }
+    
+    func fetchFavourites() -> Observable<Recipe> {
+        return Observable.create({ [weak self] observer in
+            let favourites = self?.getRecipe()
+            if let recipe = favourites {
+                observer.onNext(recipe)
+            } else {
+                let error = ServiceError(localizedDescription: "Unable to fetch recipe")
+                observer.onError(error)
+            }
+            return Disposables.create { }
+        })
+    }
+    
+    func saveFavourite(recipe: Result) -> Observable<Recipe> {
+         return Observable.create({ [weak self] observer in
+            var savedFavourites = self?.getRecipe()
+            if savedFavourites == nil {
+                // Any favourite has been added yet, init Favourites and save element
+                savedFavourites = Recipe(title: "Favourites", version: 1, href: "", results: [])
+            }
+            if var favourites = savedFavourites {
+                favourites.results.append(recipe)
+                if self?.saveRecipe(recipe: favourites) ?? false {
+                    observer.onNext(favourites)
+                } else {
+                    let error = ServiceError(localizedDescription: "Unable to save recipe")
+                    observer.onError(error)
+                }
+            }
+            return Disposables.create { }
+        })
+    }
+    
+    func deleteFavourite(recipe: Result) -> Observable<Recipe> {
+        return Observable.create({ [weak self] observer in
+            if var favourites = self?.getRecipe() {
+                favourites.results.removeAll { (result) -> Bool in
+                    return (result == recipe)
+                }
+                observer.onNext(favourites)
+            }
+            return Disposables.create { }
+        })
+    }
+    
+    private func saveRecipe(recipe: Recipe) -> Bool {
+        let userDefaults = UserDefaults.standard
+        do {
+            let jsonData = try JSONEncoder().encode(recipe)
+            userDefaults.set(jsonData, forKey: favouritesUserDefaultsKey)
+            return true
+        } catch {
+            return false
+        }
+    }
+    
+    private func getRecipe() -> Recipe? {
+        let userDefaults = UserDefaults.standard
+        do {
+            let favouritesSaved = userDefaults.object(forKey: favouritesUserDefaultsKey)
+            guard let favouritesSavedUnwrapped = favouritesSaved as? Data else { return nil }
+            return try JSONDecoder().decode(Recipe.self, from: favouritesSavedUnwrapped)
+        } catch {
+            return nil
         }
     }
 }

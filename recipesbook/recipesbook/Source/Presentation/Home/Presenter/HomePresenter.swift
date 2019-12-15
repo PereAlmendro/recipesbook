@@ -51,7 +51,7 @@ class HomePresenter: HomePresenterProtocol {
         let page = String(actualPage)
         
         if actualPage != lastPage {
-            self.lastPage = actualPage
+            lastPage = actualPage
             
             interactor?.fetchRecipes(query: query, ingredients: ingredients, page: page)
                 .subscribe({ [weak self] (item) in

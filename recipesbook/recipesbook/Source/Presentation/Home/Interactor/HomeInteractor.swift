@@ -12,6 +12,9 @@ import RxSwift
 
 protocol HomeInteractorProtocol {
     func fetchRecipes(query: String?, ingredients: String?, page: String?) -> Observable<Recipe>
+    func fetchFavourites() -> Observable<Recipe>
+    func saveFavourite(recipe: Result) -> Observable<Recipe>
+    func deleteFavourite(recipe: Result) -> Observable<Recipe>
 }
 
 class HomeInteractor: HomeInteractorProtocol {
@@ -26,5 +29,17 @@ class HomeInteractor: HomeInteractorProtocol {
     
     func fetchRecipes(query: String?, ingredients: String?, page: String?) -> Observable<Recipe> {
         return recipeRepository.fetchRecipes(query: query, ingredients: ingredients, page: page)
+    }
+    
+    func fetchFavourites() -> Observable<Recipe> {
+        return recipeRepository.fetchFavourites()
+    }
+    
+    func saveFavourite(recipe: Result) -> Observable<Recipe> {
+        return recipeRepository.saveFavourite(recipe: recipe)
+    }
+    
+    func deleteFavourite(recipe: Result) -> Observable<Recipe> {
+        return recipeRepository.deleteFavourite(recipe: recipe)
     }
 }
