@@ -31,41 +31,30 @@ UIScrollViewDelegate {
         collectionView.register(UINib(nibName: HomeRecipeCollectionViewCell.cellIdentifier, bundle: nil),
                                 forCellWithReuseIdentifier: HomeRecipeCollectionViewCell.cellIdentifier)
         
-        collectionView.isPrefetchingEnabled = true
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.estimatedItemSize = CGSize(width: UIScreen.main.bounds.size.width, height: 300)
+        }
         
-        presenter?.recipes
-            .bind(to:
-                collectionView.rx.items(cellIdentifier: HomeRecipeCollectionViewCell.cellIdentifier,
-                                        cellType: HomeRecipeCollectionViewCell.self)) { [weak self] (_, element ,cell) in
-                                            guard let strongSelf = self else { return }
-                                            cell.setupCell(recipe: element, delegate: strongSelf)
+        presenter?.recipes.bind(to:
+            collectionView.rx.items(cellIdentifier: HomeRecipeCollectionViewCell.cellIdentifier,
+                                    cellType: HomeRecipeCollectionViewCell.self)) { [weak self] (_, element ,cell) in
+                                        guard let strongSelf = self else { return }
+                                        cell.setupCell(recipe: element, delegate: strongSelf)
         }.disposed(by: disposeBag)
         
-        collectionView.rx.prefetchItems.subscribe( { event in
-            //guard let indexPaths = event.element else { return }
+        collectionView.rx.willDisplayCell.subscribe({ [presenter, collectionView] event in
+            guard let (_, indexPath) = event.element,
+                let itemsCount = collectionView?.numberOfItems(inSection: 0),
+                let offset = collectionView?.contentOffset else { return }
             
+            if itemsCount - 2 == indexPath.row &&  offset.y > 0 {
+                presenter?.fetchMoreRecipes()
+            }
         }).disposed(by: disposeBag)
         
-//        collectionView.rx.scrollViewDidScroll.subscribe({ [weak self] event in
-            // TODO: remove this and implement prefetchItems to load more cells while user scrolls
-//            guard let scrollView = event.element else { return }
-//
-//            let scrollViewHeight = scrollView.frame.size.height
-//            let scrollViewContentSize = scrollView.contentSize.height
-//            let scrollViewOffset = scrollView.contentOffset.y
-//            let bottomOffsetLoadMore: CGFloat = 100.0
-//
-//            let isAtBottom = (scrollViewOffset + scrollViewHeight > scrollViewContentSize - bottomOffsetLoadMore)
-//            if (isAtBottom) {
-//                scrollView.stopScrolling()
-//                self?.presenter.fetchMoreRecipes()
-//            }
-//        }).disposed(by: disposeBag)
-        
-        
-        collectionView.rx.modelSelected(Result.self).subscribe({[weak self] event in
+        collectionView.rx.modelSelected(Result.self).subscribe({ [presenter] event in
             guard let recipe = event.element else { return }
-            self?.presenter?.openDetail(recipe: recipe)
+            presenter?.openDetail(recipe: recipe)
         }).disposed(by: disposeBag)
     }
     
@@ -74,7 +63,10 @@ UIScrollViewDelegate {
     func makeFavouriteAction(_ recipe: Result) {
         presenter?.makeFavourite(recipe: recipe)
     }
+    
+    // MARK: - NavBar Action
+    
     @IBAction func navigationBarRightButtonAction(_ sender: Any) {
-        presenter.navigationBarRightButtonAction()
+        presenter?.navigationBarRightButtonAction()
     }
 }

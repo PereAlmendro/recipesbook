@@ -19,13 +19,13 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="PqA-8R-tZO">
-                    <rect key="frame" x="20" y="74" width="374" height="56"/>
+                <searchBar contentMode="redraw" searchBarStyle="minimal" prompt="Search by ingredients" placeholder="onions, carrots ..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqA-8R-tZO">
+                    <rect key="frame" x="20" y="54" width="374" height="90"/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Dh5-xN-v03">
-                    <rect key="frame" x="0.0" y="135" width="414" height="727"/>
-                    <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Dh5-xN-v03">
+                    <rect key="frame" x="0.0" y="149" width="414" height="713"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2jc-Gw-3TY">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -39,9 +39,8 @@
             <constraints>
                 <constraint firstItem="pTs-ZO-mwk" firstAttribute="trailing" secondItem="Dh5-xN-v03" secondAttribute="trailing" id="0Yi-VE-w34"/>
                 <constraint firstItem="pTs-ZO-mwk" firstAttribute="bottom" secondItem="Dh5-xN-v03" secondAttribute="bottom" id="7NH-FV-NsD"/>
-                <constraint firstItem="PqA-8R-tZO" firstAttribute="top" secondItem="pTs-ZO-mwk" secondAttribute="top" constant="30" id="C6h-aq-f2o"/>
+                <constraint firstItem="PqA-8R-tZO" firstAttribute="top" secondItem="pTs-ZO-mwk" secondAttribute="top" constant="10" id="C6h-aq-f2o"/>
                 <constraint firstItem="PqA-8R-tZO" firstAttribute="trailing" secondItem="pTs-ZO-mwk" secondAttribute="trailing" constant="-20" id="PhI-Bg-ujs"/>
-                <constraint firstItem="Dh5-xN-v03" firstAttribute="height" secondItem="0p3-mp-ugD" secondAttribute="height" multiplier="0.811384" id="ScD-WC-6gx"/>
                 <constraint firstItem="Dh5-xN-v03" firstAttribute="leading" secondItem="pTs-ZO-mwk" secondAttribute="leading" id="Wan-bQ-KK0"/>
                 <constraint firstItem="PqA-8R-tZO" firstAttribute="leading" secondItem="pTs-ZO-mwk" secondAttribute="leading" constant="20" id="jxl-lZ-QZ1"/>
                 <constraint firstItem="Dh5-xN-v03" firstAttribute="top" secondItem="PqA-8R-tZO" secondAttribute="bottom" constant="5" id="yD4-xL-b7C"/>
