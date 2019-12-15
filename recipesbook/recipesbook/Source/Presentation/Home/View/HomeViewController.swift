@@ -30,7 +30,7 @@ UIScrollViewDelegate {
         setupSearchBar()
         setupTopShadow()
         setupInformationView()
-        enableLargeTitles()
+        setupNavigationBar()
     }
     
     private func setupTopShadow() {
@@ -76,7 +76,7 @@ UIScrollViewDelegate {
     }
     
     private func setupSearchBar() {
-        searchBar.placeholder = "Search : onions, carrots ..."
+        searchBar.placeholder = "Search : onions, eggs ..."
         searchBar.rx.searchButtonClicked.subscribe({ [weak self] event in
             self?.presenter?.searchQuery(queryString: self?.searchBar.text)
             self?.searchBar.resignFirstResponder()
@@ -105,14 +105,14 @@ UIScrollViewDelegate {
     
     // MARK: - NavBar
     
-    private func enableLargeTitles() {
+    private func setupNavigationBar() {
         title = "Recipes Book"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
     
-    @IBAction func navigationBarRightButtonAction(_ sender: Any) {
-        presenter?.navigationBarRightButtonAction()
+    @objc func goToFavourites(_ sender: Any) {
+        presenter?.goToFavourites()
     }
     
     // MARK: - UICollectionViewDelegate
