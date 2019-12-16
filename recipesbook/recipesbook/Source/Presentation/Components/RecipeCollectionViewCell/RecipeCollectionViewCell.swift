@@ -50,7 +50,7 @@ class RecipeCollectionViewCell: UICollectionViewCell {
         let url = URL(string: recipe.thumbnail)
         recipeImageView.setImageUrl(url)
         
-        hasLactoseLabel.isHidden = true
+        hasLactoseLabel.isHidden = !recipe.ingredients.contains("milk") && !recipe.ingredients.contains("cheese")
     }
     
     // MARK - User Actions
