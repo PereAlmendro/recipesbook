@@ -14,14 +14,13 @@ protocol RecipeDetailPresenterProtocol {
 }
 
 class RecipeDetailPresenter: RecipeDetailPresenterProtocol {
-    private var interactor: RecipeDetailInteractorProtocol?
-    private var router: RecipeDetailRouterProtocol?
+    private var interactor: RecipeDetailInteractorProtocol
+    private var router: RecipeDetailRouterProtocol
     var detailUrl: URL?
     
-    init(interactor: RecipeDetailInteractorProtocol?, router: RecipeDetailRouterProtocol?, detailUrl: String?) {
+    init(interactor: RecipeDetailInteractorProtocol, router: RecipeDetailRouterProtocol, detailUrl: String) {
         self.interactor = interactor
         self.router = router
-        guard let detailUrl = detailUrl else { return }
         self.detailUrl = URL(string: detailUrl)
     }
 }

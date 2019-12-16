@@ -11,6 +11,7 @@ import UIKit
 
 
 protocol HomeRouterProtocol {
+    func goToFavourites()
     func openRecipeDetailWithRequest(_ request: String)
     func showAlert(title: String?, message: String?,
                    action: String?, style: UIAlertAction.Style,
@@ -22,6 +23,17 @@ class HomeRouter: HomeRouterProtocol {
     
     init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
+    }
+    
+    func goToFavourites() {
+        let favourites = FavouritesViewController()
+        let recipeRepository = RecipeRepository()
+        let favouritesInteractor = FavouritesInteractor(recipeRepository: recipeRepository)
+        let favouritesRouter = FavouritesRouter(navigationController: navigationController)
+        let favouritesPresenter = FavouritesPresenter(interactor: favouritesInteractor,
+                                                      router: favouritesRouter)
+        favourites.presenter = favouritesPresenter
+        navigationController?.pushViewController(favourites, animated: true)
     }
     
     func openRecipeDetailWithRequest(_ request: String) {

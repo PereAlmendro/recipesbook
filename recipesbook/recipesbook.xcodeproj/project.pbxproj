@@ -17,6 +17,11 @@
 		192186A623A17A6500FFC10A /* UIFont+fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192186A523A17A6500FFC10A /* UIFont+fonts.swift */; };
 		1965E1A423A6A8AE007283FD /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1965E1A323A6A8AE007283FD /* InformationView.swift */; };
 		1965E1AE23A6A9F4007283FD /* InformationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1965E1AD23A6A9F4007283FD /* InformationView.xib */; };
+		1965E1B523A6F96E007283FD /* FavouritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1965E1B423A6F96E007283FD /* FavouritesPresenter.swift */; };
+		1965E1B723A6F979007283FD /* FavouritesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1965E1B623A6F979007283FD /* FavouritesInteractor.swift */; };
+		1965E1B923A6F982007283FD /* FavouritesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1965E1B823A6F982007283FD /* FavouritesRouter.swift */; };
+		1965E1BC23A6F994007283FD /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1965E1BA23A6F994007283FD /* FavouritesViewController.swift */; };
+		1965E1BD23A6F994007283FD /* FavouritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1965E1BB23A6F994007283FD /* FavouritesViewController.xib */; };
 		1967250723A054C5005C6D17 /* RecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196724F623A054C5005C6D17 /* RecipeResponse.swift */; };
 		1967250823A054C5005C6D17 /* RecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196724FB23A054C5005C6D17 /* RecipeCollectionViewCell.swift */; };
 		1967250923A054C5005C6D17 /* RecipeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196724FC23A054C5005C6D17 /* RecipeCollectionViewCell.xib */; };
@@ -74,6 +79,11 @@
 		192186A523A17A6500FFC10A /* UIFont+fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+fonts.swift"; sourceTree = "<group>"; };
 		1965E1A323A6A8AE007283FD /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		1965E1AD23A6A9F4007283FD /* InformationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationView.xib; sourceTree = "<group>"; };
+		1965E1B423A6F96E007283FD /* FavouritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesPresenter.swift; sourceTree = "<group>"; };
+		1965E1B623A6F979007283FD /* FavouritesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesInteractor.swift; sourceTree = "<group>"; };
+		1965E1B823A6F982007283FD /* FavouritesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesRouter.swift; sourceTree = "<group>"; };
+		1965E1BA23A6F994007283FD /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
+		1965E1BB23A6F994007283FD /* FavouritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouritesViewController.xib; sourceTree = "<group>"; };
 		196724F623A054C5005C6D17 /* RecipeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeResponse.swift; sourceTree = "<group>"; };
 		196724FB23A054C5005C6D17 /* RecipeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewCell.swift; sourceTree = "<group>"; };
 		196724FC23A054C5005C6D17 /* RecipeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -232,6 +242,7 @@
 		1965E1B023A6F80B007283FD /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				1965E1B423A6F96E007283FD /* FavouritesPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -239,6 +250,7 @@
 		1965E1B123A6F812007283FD /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				1965E1B623A6F979007283FD /* FavouritesInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -246,6 +258,7 @@
 		1965E1B223A6F81B007283FD /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				1965E1B823A6F982007283FD /* FavouritesRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -253,6 +266,8 @@
 		1965E1B323A6F820007283FD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1965E1BA23A6F994007283FD /* FavouritesViewController.swift */,
+				1965E1BB23A6F994007283FD /* FavouritesViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -553,6 +568,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1965E1BD23A6F994007283FD /* FavouritesViewController.xib in Resources */,
 				1903FCB223A0517800A1AC1B /* LaunchScreen.storyboard in Resources */,
 				19E469DD23A4EDC800D5193A /* RecipeDetailViewController.xib in Resources */,
 				1903FCAF23A0517800A1AC1B /* Assets.xcassets in Resources */,
@@ -686,11 +702,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1965E1BC23A6F994007283FD /* FavouritesViewController.swift in Sources */,
 				192186A623A17A6500FFC10A /* UIFont+fonts.swift in Sources */,
 				19E94DF523A1AC9700FFDDA2 /* UIScrollView+rx.swift in Sources */,
 				1905037323A2EC5400944E78 /* RecipeRepository.swift in Sources */,
 				1903FCA623A0517500A1AC1B /* AppDelegate.swift in Sources */,
 				1967250723A054C5005C6D17 /* RecipeResponse.swift in Sources */,
+				1965E1B523A6F96E007283FD /* FavouritesPresenter.swift in Sources */,
 				1967250E23A054C5005C6D17 /* HomePresenter.swift in Sources */,
 				19E469E123A4EE8E00D5193A /* RecipeDetailPresenter.swift in Sources */,
 				19E469EC23A6626200D5193A /* UIView+extension.swift in Sources */,
@@ -705,7 +723,9 @@
 				19E94DF723A1B61F00FFDDA2 /* UIScrollView+extension.swift in Sources */,
 				1967250A23A054C5005C6D17 /* HomeViewController.swift in Sources */,
 				19E469DC23A4EDC800D5193A /* RecipeDetailViewController.swift in Sources */,
+				1965E1B723A6F979007283FD /* FavouritesInteractor.swift in Sources */,
 				1967250B23A054C5005C6D17 /* HomeInteractor.swift in Sources */,
+				1965E1B923A6F982007283FD /* FavouritesRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

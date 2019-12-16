@@ -24,8 +24,8 @@ protocol HomePresenterProtocol {
 class HomePresenter: HomePresenterProtocol {
     
     private let disposeBag = DisposeBag()
-    private var interactor: HomeInteractorProtocol? = nil
-    private var router: HomeRouterProtocol? = nil
+    private var interactor: HomeInteractorProtocol
+    private var router: HomeRouterProtocol
     private var actualIngredients: String = ""
     private var actualPage: Int = 1
     private var lastPage: Int = 0
@@ -53,7 +53,7 @@ class HomePresenter: HomePresenterProtocol {
         if actualPage != lastPage {
             lastPage = actualPage
             
-            interactor?.fetchRecipes(query: query, ingredients: ingredients, page: page)
+            interactor.fetchRecipes(query: query, ingredients: ingredients, page: page)
                 .subscribe({ [weak self] (item) in
                     self?.actualPage += 1
                     guard let recipe = item.element else { return }
@@ -110,22 +110,22 @@ class HomePresenter: HomePresenterProtocol {
     }
     
     func makeFavourite(recipe: Result) {
-        interactor?.saveFavourite(recipe: recipe).subscribe({ [router] event in
+        interactor.saveFavourite(recipe: recipe).subscribe({ [router] event in
             if let error = event.error {
-                router?.showAlert(title: "Something went wrong", message: error.localizedDescription,
+                router.showAlert(title: "Something went wrong", message: error.localizedDescription,
                 action: "Close", style: .default, handler: nil)
             } else {
-                router?.showAlert(title: "Recipe added to favourites", message: nil,
+                router.showAlert(title: "Recipe added to favourites", message: nil,
                                   action: "Close", style: .default, handler: nil)
             }
         }).disposed(by: disposeBag)
     }
     
     func goToFavourites() {
-        // TODO: Open saved favourites screen
+        router.goToFavourites()
     }
     
     func openDetail(recipe: Result) {
-        router?.openRecipeDetailWithRequest(recipe.href)
+        router.openRecipeDetailWithRequest(recipe.href)
     }
 }

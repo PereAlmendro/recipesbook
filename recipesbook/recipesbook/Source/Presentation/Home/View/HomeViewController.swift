@@ -55,7 +55,7 @@ UIScrollViewDelegate {
             collectionView.rx.items(cellIdentifier: RecipeCollectionViewCell.cellIdentifier,
                                     cellType: RecipeCollectionViewCell.self)) { [weak self] (_, element ,cell) in
                                         guard let strongSelf = self else { return }
-                                        cell.setupCell(recipe: element, delegate: strongSelf)
+                                        cell.setupCell(recipe: element, delegate: strongSelf, buttonTitle: "Make\nfavourite")
         }.disposed(by: disposeBag)
         
         collectionView.rx.willDisplayCell.subscribe({ [presenter, collectionView] event in
@@ -99,7 +99,7 @@ UIScrollViewDelegate {
     
     // MARK: - RecipeCollectionViewCellDelegate
     
-    func makeFavouriteAction(_ recipe: Result) {
+    func buttonAction(_ recipe: Result) {
         presenter?.makeFavourite(recipe: recipe)
     }
     

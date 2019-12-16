@@ -30,7 +30,7 @@ class RecipeRepository {
         ]
         
         guard let url = components?.url else {
-            let error = ServiceError(localizedDescription: "Invalid Request")
+            let error = ServiceError(type: .invalidRequest, localizedDescription: "Invalid Request")
             return Observable.error(error)
         }
         
@@ -50,7 +50,7 @@ class RecipeRepository {
             if let recipe = favourites {
                 observer.onNext(recipe)
             } else {
-                let error = ServiceError(localizedDescription: "Unable to fetch recipe")
+                let error = ServiceError(type: .noResults, localizedDescription: "There are no favourites yet")
                 observer.onError(error)
             }
             return Disposables.create()
@@ -69,7 +69,7 @@ class RecipeRepository {
                 if self?.saveRecipe(recipe: favourites) ?? false {
                     observer.onNext(favourites)
                 } else {
-                    let error = ServiceError(localizedDescription: "Unable to save recipe")
+                    let error = ServiceError(type: .operationFailed, localizedDescription: "Unable to save recipe")
                     observer.onError(error)
                 }
             }
@@ -83,7 +83,13 @@ class RecipeRepository {
                 favourites.results.removeAll { (result) -> Bool in
                     return (result == recipe)
                 }
-                observer.onNext(favourites)
+                if self?.saveRecipe(recipe: favourites) ?? false {
+                    observer.onNext(favourites)
+                } else {
+                    let error = ServiceError(type: .operationFailed, localizedDescription: "Unable to delete recipe")
+                    observer.onError(error)
+                }
+                
             }
             return Disposables.create()
         })

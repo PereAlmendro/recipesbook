@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RecipeCollectionViewCellDelegate: AnyObject {
-    func makeFavouriteAction(_ recipe: Result)
+    func buttonAction(_ recipe: Result)
 }
 
 class RecipeCollectionViewCell: UICollectionViewCell {
@@ -35,13 +35,14 @@ class RecipeCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupLabelsUI()
-        setupMakeFavouritesButton()
         addBottomShadow()
     }
     
-    func setupCell(recipe: Result, delegate: RecipeCollectionViewCellDelegate) {
+    func setupCell(recipe: Result, delegate: RecipeCollectionViewCellDelegate, buttonTitle: String) {
         self.delegate = delegate
         self.recipe = recipe
+        
+        setupButton(title: buttonTitle)
         
         recipeNameLabel.text = recipe.title
         recipeIngredientsLabel.text = recipe.ingredients
@@ -54,9 +55,9 @@ class RecipeCollectionViewCell: UICollectionViewCell {
     
     // MARK - User Actions
 
-    @IBAction func makeFavouriteAction(_ sender: Any) {
+    @IBAction func buttonAction(_ sender: Any) {
         guard let recipe = recipe else { return }
-        delegate?.makeFavouriteAction(recipe)
+        delegate?.buttonAction(recipe)
     }
     
     // MARK - Overrides
@@ -79,8 +80,8 @@ class RecipeCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private methods
     
-    private func setupMakeFavouritesButton() {
-        makeFavouriteButton.setTitle("Make\nfavourite", for: .normal)
+    private func setupButton(title: String) {
+        makeFavouriteButton.setTitle(title, for: .normal)
         makeFavouriteButton.titleLabel?.numberOfLines = 2
         makeFavouriteButton.titleLabel?.textAlignment = .center
         makeFavouriteButton.layer.borderWidth = 1
